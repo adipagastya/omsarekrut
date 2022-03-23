@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegionController;
 use Illuminate\Support\Facades\Route;
+
+use App\Models\Region;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +28,11 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
-        'title' => 'Beranda'
+        'title' => 'Beranda',
+        'regionCount' => Region::all(),
+        'userCount' => User::all(),
+
     ]);
 })->middleware('auth');
+
+Route::resource('/dashboard/regions', RegionController::class)->middleware('auth');

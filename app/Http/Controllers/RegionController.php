@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Region;
+use App\Models\User;
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
 
@@ -13,9 +14,13 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user, Region $region)
     {
-        //
+        return view('dashboard.regions.index', [
+            'title' => 'Wilayah',
+            'userCount' => $user,
+            'regions' => $region::all()
+        ]);
     }
 
     /**

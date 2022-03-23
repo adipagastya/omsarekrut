@@ -53,8 +53,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              {{-- <h3>{{ $userCount->count() }}</h3> --}}
-              <h3>33</h3>
+              <h3>{{ $userCount->count() }}</h3>
 
               <p>Role User</p>
             </div>
@@ -68,8 +67,7 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              {{-- <h3>{{ $regionCount->count() }}</h3> --}}
-              <h3>12</h3>
+              <h3>{{ $regionCount->count() }}</h3>
 
               <p>Wilayah</p>
             </div>
