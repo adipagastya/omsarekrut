@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class Region extends Model
 {
+    protected $guarded = ['id']; 
+
     use HasFactory;
 
     public function getRegion()

@@ -48,7 +48,7 @@ class RegionController extends Controller
             'name' => 'required|max:255'
         ]);
 
-        User::create($validatedData);
+        Region::create($validatedData);
 
         // $request->session()->flash('success', 'Registration successfull! Please login');
 

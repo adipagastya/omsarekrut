@@ -30,7 +30,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Wilayah</label>
-                <input type="text" class="form-control" placeholder="Nama Wilayah" required>
+                <input type="text" class="form-control" placeholder="Nama Wilayah" name="name" required>
               </div>
             </div>
             <!-- /.card-body -->
