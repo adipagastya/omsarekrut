@@ -27,7 +27,14 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Silahkan login untuk memulai</p>
-
+        @if (session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ session('loginError') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        @endif
         <form action="/login" method="post">
           @csrf
           <div class="input-group mb-3">

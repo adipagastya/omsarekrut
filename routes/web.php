@@ -26,4 +26,4 @@ Route::get('/dashboard', function () {
     return view('dashboard.index', [
         'title' => 'Beranda'
     ]);
-});
+})->middleware('auth');
