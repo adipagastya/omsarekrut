@@ -28,9 +28,12 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        return view('dashboard.regions.create', [
+            'title' => 'Tambah Wilayah',
+            'userCount' => $user::all()
+        ]);
     }
 
     /**
@@ -41,7 +44,16 @@ class RegionController extends Controller
      */
     public function store(StoreRegionRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        User::create($validatedData);
+
+        // $request->session()->flash('success', 'Registration successfull! Please login');
+
+        // return redirect('/dashboard/regions')->with('success', 'Registration successfull! Please login');
+        return redirect('/dashboard/regions');
     }
 
     /**
