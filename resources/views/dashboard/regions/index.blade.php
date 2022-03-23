@@ -44,12 +44,11 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $region->name }}</td>
                   <td>
-                      <a href="/dashboard/posts/{{ $region->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-                      <a href="/dashboard/posts/{{ $region->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                      <form action="/dashboard/posts/{{ $region->slug }}" method="post" class="d-inline">
+                      <a href="/dashboard/regions/{{ $region->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
+                      <form action="/dashboard/regions/{{ $region->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></button>
+                        <button class="badge bg-danger border-0 p-2" onclick="return confirm('Anda yakin?')"><i class="fas fa-trash"></i></button>
                       </form>
                   </td>
                 </tr>
