@@ -22,7 +22,10 @@ use App\Models\WorkField;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('form', [
+        'title' => 'Rekruitment',
+        'regions' => Region::all()
+    ]);
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
