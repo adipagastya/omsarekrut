@@ -74,9 +74,13 @@ class WorkFieldController extends Controller
      * @param  \App\Models\WorkField  $workField
      * @return \Illuminate\Http\Response
      */
-    public function edit(WorkField $workField)
+    public function edit(WorkField $workField, Region $region)
     {
-        //
+        return view('dashboard.workfields.edit', [
+            'title' => 'Ubah Bidang Pekerjaan',
+            'workfield' => $workField,
+            'regions' => $region::all()
+        ]);
     }
 
     /**

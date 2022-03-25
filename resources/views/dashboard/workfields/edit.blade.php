@@ -21,23 +21,25 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Tambah data pekerjaan</h3>
+            <h3 class="card-title">Ubah data pekerjaan</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/workfields">
+          <form method="post" action="/dashboard/workfields/{{ $workfield->id }}">
+            @method('put')
             @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Pekerjaan</label>
-                <input type="text" class="form-control" placeholder="Nama Pekerjaan" name="name" required>
+                <input type="text" class="form-control" placeholder="Nama Pekerjaan" name="name" value="{{ old('name', $workfield->name) }}" required>
               </div>
+              
               <!-- select -->
               <div class="form-group">
                 <label>Wilayah</label>
                 <select class="form-control" name="region_id" required>
                   @foreach ($regions as $region)
-                      @if (old('region_id') == $region->id)
+                      @if (old('region_id', $workfield->region_id) == $region->id)
                           <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
                       @else
                           <option value="{{ $region->id }}">{{ $region->name }}</option>
