@@ -74,7 +74,10 @@ class RegionController extends Controller
      */
     public function edit(Region $region)
     {
-        //
+        return view('dashboard.regions.edit', [
+            'title' => 'Ubah Wilayah',
+            'region' => $region
+        ]);
     }
 
     /**
@@ -86,7 +89,14 @@ class RegionController extends Controller
      */
     public function update(UpdateRegionRequest $request, Region $region)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        Region::where('id', $region->id)
+            ->update($validatedData);
+
+            return redirect('/dashboard/regions')->with('success', 'Data berhasil diubah');
     }
 
     /**
