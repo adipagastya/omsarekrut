@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WorkField;
+use App\Models\Region;
 use App\Models\User;
 use App\Http\Requests\StoreWorkFieldRequest;
 use App\Http\Requests\UpdateWorkFieldRequest;
@@ -28,9 +29,13 @@ class WorkFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Region $region, User $user)
     {
-        //
+        return view('dashboard.workfields.create', [
+            'title' => 'Tambah Bidang Pekarjaan',
+            'regions' => $region::all(),
+            'userCount' => $user::all()
+        ]);
     }
 
     /**
@@ -41,7 +46,15 @@ class WorkFieldController extends Controller
      */
     public function store(StoreWorkFieldRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:100',
+            'region_id' => 'required',
+            'type' => 'required'
+        ]); 
+
+        WorkField::create($validatedData);
+
+        return redirect('/dashboard/workfields')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
