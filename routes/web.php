@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkFieldController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,5 +39,6 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
+Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/regions', RegionController::class)->middleware('auth');
 Route::resource('/dashboard/workfields', WorkFieldController::class)->middleware('auth');

@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Adipa Agastya',
             'email' => 'adipa@omsamedic.com',
-            'password' => bcrypt('12345')
+            'password' => bcrypt('12345'),
+            'is_admin' => 1
         ]);
 
         Region::create([
