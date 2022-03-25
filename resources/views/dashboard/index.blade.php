@@ -37,8 +37,7 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              {{-- <h3>{{ $workCount->count() }}</h3> --}}
-              <h3>23</h3>
+              <h3>{{ $workCount->count() }}</h3>
 
               <p>Bidang Pekerjaan</p>
             </div>

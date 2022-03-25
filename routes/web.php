@@ -33,6 +33,7 @@ Route::get('/dashboard', function () {
         'title' => 'Beranda',
         'regionCount' => Region::all(),
         'userCount' => User::all(),
+        'workCount' => WorkField::all(),
 
     ]);
 })->middleware('auth');
