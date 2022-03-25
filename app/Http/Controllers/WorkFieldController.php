@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WorkField;
+use App\Models\User;
 use App\Http\Requests\StoreWorkFieldRequest;
 use App\Http\Requests\UpdateWorkFieldRequest;
 
@@ -13,9 +14,13 @@ class WorkFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user, WorkField $workfield)
     {
-        //
+        return view('dashboard.workfields.index', [
+            'title' => 'Bidang Pekerjaan',
+            'userCount' => $user,
+            'workfields' => $workfield::all()
+        ]);
     }
 
     /**

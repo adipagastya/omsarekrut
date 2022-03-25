@@ -35,5 +35,11 @@ class DatabaseSeeder extends Seeder
         Region::create([
             'name' => 'Yogyakarta'
         ]);
+
+        WorkField::create([
+            'name' => 'Admin',
+            'type' => 'Non Medical',
+            'region_id' => 1
+        ]);
     }
 }
