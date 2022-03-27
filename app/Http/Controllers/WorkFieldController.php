@@ -103,6 +103,7 @@ class WorkFieldController extends Controller
      */
     public function destroy(WorkField $workField)
     {
-        //
+        WorkField::destroy($workField->id);
+        return redirect('/dashboard/workfields')->with('success', 'Data berhasil dihapus');
     }
 }
