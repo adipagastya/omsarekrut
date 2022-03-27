@@ -92,7 +92,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|email|unique:users',
+            'is_admin' => 'required'
+        ]);
+
+        User::where('id', $user->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/users')->with('success', 'Data berhasil diubah');
     }
 
     /**

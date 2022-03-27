@@ -31,7 +31,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Nama User</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama User" name="name" required value="{{ old('name'), $user->name }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama User" name="name" required value="{{ old('name', $user->name) }}">
                 @error('name')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -40,17 +40,8 @@
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required value="{{ old('email') }}">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required value="{{ old('email', $user->email) }}">
                 @error('email')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required>
-                @error('password')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
@@ -60,11 +51,11 @@
               <div class="form-group">
                 <label>Role</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="is_admin" value="0" required {{ old('is_admin') == '0'? 'checked' : ''}}>
+                  <input class="form-check-input" type="radio" name="is_admin" value="0" required {{ old('is_admin', $user->is_admin) == '0'? 'checked' : ''}}>
                   <label class="form-check-label">User</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="is_admin" value="1" {{ old('is_admin') == '1'? 'checked' : ''}}>
+                  <input class="form-check-input" type="radio" name="is_admin" value="1" {{ old('is_admin', $user->is_admin) == '1'? 'checked' : ''}}>
                   <label class="form-check-label">Admin</label>
                 </div>
                 @error('is_admin')
