@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -36,10 +38,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
@@ -49,6 +51,7 @@ class UserController extends Controller
         ]); 
 
         $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['is_admin'] = (int)$validatedData['is_admin'];
 
         User::create($validatedData);
 
@@ -74,7 +77,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.users.edit', [
+            'title' => 'Ubah Role User',
+            'user' => $user
+        ]);
     }
 
     /**

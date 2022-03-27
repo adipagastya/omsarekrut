@@ -21,16 +21,17 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Tambah data user</h3>
+            <h3 class="card-title">Ubah data role user</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/users">
+          <form method="post" action="/dashboard/users/{{ $user->id }}">
+            @method('put')
             @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama User</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama User" name="name" required value="{{ old('name') }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama User" name="name" required value="{{ old('name'), $user->name }}">
                 @error('name')
                   <div class="invalid-feedback">
                     {{ $message }}
