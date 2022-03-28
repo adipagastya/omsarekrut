@@ -92,11 +92,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'name' => 'required|max:100',
-            'email' => 'required|email|unique:users',
             'is_admin' => 'required'
-        ]);
+        ];
+
+        if ($request->email != $user->email) {
+            $rules['email'] = 'required|unique:users';
+        }
+
+        $validatedData = $request->validate($rules);
 
         User::where('id', $user->id)
             ->update($validatedData);
