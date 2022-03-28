@@ -74,11 +74,11 @@ class WorkFieldController extends Controller
      * @param  \App\Models\WorkField  $workField
      * @return \Illuminate\Http\Response
      */
-    public function edit(WorkField $workField, Region $region)
+    public function edit(WorkField $workfield, Region $region)
     {
         return view('dashboard.workfields.edit', [
             'title' => 'Ubah Bidang Pekerjaan',
-            'workfield' => $workField,
+            'workfield' => $workfield,
             'regions' => $region::all()
         ]);
     }
@@ -101,9 +101,9 @@ class WorkFieldController extends Controller
      * @param  \App\Models\WorkField  $workField
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WorkField $workField)
+    public function destroy(WorkField $workfield)
     {
-        WorkField::destroy($workField->id);
+        WorkField::destroy($workfield->id);
         return redirect('/dashboard/workfields')->with('success', 'Data berhasil dihapus');
     }
 }
