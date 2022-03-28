@@ -90,9 +90,18 @@ class WorkFieldController extends Controller
      * @param  \App\Models\WorkField  $workField
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWorkFieldRequest $request, WorkField $workField)
+    public function update(UpdateWorkFieldRequest $request, WorkField $workfield)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:100',
+            'region_id' => 'required',
+            'type' => 'required'
+        ]);
+
+        WorkField::where('id', $workfield->id)
+            ->update($validatedData);
+
+            return redirect('/dashboard/workfields')->with('success', 'Data berhasil diubah');
     }
 
     /**

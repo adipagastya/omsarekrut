@@ -47,6 +47,7 @@
               </div>
               <!-- radio -->
               <div class="form-group">
+                <label>Tipe</label>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="type" value="Medical" checked>
                   <label class="form-check-label">Medical</label>

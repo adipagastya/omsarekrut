@@ -49,12 +49,13 @@
               </div>
               <!-- radio -->
               <div class="form-group">
+                <label>Tipe</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Medical" checked>
+                  <input class="form-check-input" type="radio" name="type" value="Medical" {{ old('type', $workfield->type) == 'Medical'? 'checked' : ''}}>
                   <label class="form-check-label">Medical</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Non Medical">
+                  <input class="form-check-input" type="radio" name="type" value="Non Medical" {{ old('type', $workfield->type) == 'Non Medical'? 'checked' : ''}}>
                   <label class="form-check-label">Non Medical</label>
                 </div>
               </div>
