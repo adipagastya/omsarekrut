@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/dashboard/posts" class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}">
+            <a href="/dashboard/candidates" class="nav-link {{ Request::is('dashboard/candidates*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Kandidat

@@ -50,7 +50,9 @@ class CandidateController extends Controller
      */
     public function show(Candidate $candidate)
     {
-        //
+        return view('dashboard.candidates.show', [
+            'title' => 'Rekruitment'
+        ]);
     }
 
     /**

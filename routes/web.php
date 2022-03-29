@@ -23,14 +23,13 @@ use App\Models\WorkField;
 |
 */
 
-// Route::get('/', function () {
-//     return view('form', [
-//         'title' => 'Rekruitment',
-//         'regions' => Region::all()
-//     ]);
-// });
+Route::get('/', function () {
+    return view('form', [
+        'title' => 'Rekruitment',
+        'regions' => Region::all()
+    ]);
+});
 
-Route::resource('/', CandidateController::class);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -49,4 +48,6 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/regions', RegionController::class)->middleware('auth');
 Route::resource('/dashboard/workfields', WorkFieldController::class)->middleware('auth');
+Route::resource('/dashboard/candidates', CandidateController::class);
+
 Route::get('/recruit/{idregion}',[ShowJobsByRegion::class,'showJobsByRegion'] ); 
