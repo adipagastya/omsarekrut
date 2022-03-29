@@ -21,49 +21,76 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Ubah data pekerjaan</h3>
+            <h3 class="card-title">Data Diri</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $workfield->id }}">
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
             @method('put')
             @csrf
             <div class="card-body">
               <div class="form-group">
-                <label>Nama Pekerjaan</label>
-                <input type="text" class="form-control" placeholder="Nama Pekerjaan" name="name" value="{{ old('name', $workfield->name) }}" required>
+                <label>Nama Lengkap</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->name) }}" required>
               </div>
-              
-              <!-- select -->
               <div class="form-group">
-                <label>Wilayah</label>
-                <select class="form-control" name="region_id" required>
-                  @foreach ($regions as $region)
-                      @if (old('region_id', $workfield->region_id) == $region->id)
-                          <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
-                      @else
-                          <option value="{{ $region->id }}">{{ $region->name }}</option>
-                      @endif
-                  @endforeach
-                </select>
+                <label>No Telepon</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->phone) }}" required>
               </div>
-              <!-- radio -->
               <div class="form-group">
-                <label>Tipe</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Medical" {{ old('type', $workfield->type) == 'Medical'? 'checked' : ''}}>
-                  <label class="form-check-label">Medical</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Non Medical" {{ old('type', $workfield->type) == 'Non Medical'? 'checked' : ''}}>
-                  <label class="form-check-label">Non Medical</label>
-                </div>
+                <label>Email</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->email) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->place_birth) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->date_birth) }}" required>
               </div>
             </div>
-            <!-- /.card-body -->
-
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <!-- /.card -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Pendidikan Terakhir</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Nama Universitas / Institut / Sekolah</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->studies) }}" required>
+              </div>
+              <div class="form-group">
+                <label>No Telepon</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->phone) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Jurusan</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->major) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Tingkat Pendidikan</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->edu_level) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Lulus</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->grad_year) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Scan Ijazah</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->study_certificate) }}" required>
+              </div>
+              <div class="form-group">
+                <label>Scan Transcript</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->transcript ) }}" required>
+              </div>
             </div>
           </form>
         </div>

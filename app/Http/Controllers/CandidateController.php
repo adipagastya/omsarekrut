@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Region;
+use App\Models\WorkField;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -13,11 +14,12 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(WorkField $workfield, Region $regions)
     {
-        return view('form', [
+        return view('dashboard.candidates.show', [
             'title' => 'Rekruitment',
-            'regions' => Region::all()
+            'workfield' => $workfield,
+            'region' => $regions
         ]);
     }
 
@@ -26,9 +28,13 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(WorkField $workfield, Region $regions)
     {
-        //
+        return view('dashboard.candidates.show', [
+            'title' => 'Rekruitment',
+            'workfield' => $workfield,
+            'region' => $regions
+        ]);
     }
 
     /**
@@ -51,7 +57,8 @@ class CandidateController extends Controller
     public function show(Candidate $candidate)
     {
         return view('dashboard.candidates.show', [
-            'title' => 'Rekruitment'
+            'title' => 'Detail Kandidat',
+            'candidate' => $candidate
         ]);
     }
 
@@ -63,7 +70,10 @@ class CandidateController extends Controller
      */
     public function edit(Candidate $candidate)
     {
-        //
+        return view('dashboard.candidates.show', [
+            'title' => 'Detail Kandidat',
+            'candidate' => $candidate
+        ]);
     }
 
     /**

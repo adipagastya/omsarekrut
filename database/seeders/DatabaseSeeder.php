@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\WorkField;
+use App\Models\Candidate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -41,6 +42,20 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'type' => 'Non Medical',
             'region_id' => 1
+        ]);
+
+        Candidate::create([
+            'name' => 'Putu Adipa',
+            'email' => 'adi@mail.com',
+            'phone' => '089473687366',
+            'place_birth' => 'Bali',
+            'date_birth' => '1997/08/28',
+            'studies' => 'ITB STIKOM Bali',
+            'major' => 'Sistem Informasi',
+            'edu_level' => 'Sarjana 1',
+            'grad_year' => '2019',
+            'study_certificate' => 'certif.jpg',
+            'transcript' => 'transcript.jpg'
         ]);
     }
 }
