@@ -13,11 +13,11 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Candidate $candidate)
     {
-        return view('form', [
+        return view('dashboard.candidates.index', [
             'title' => 'Rekruitment',
-            'regions' => Region::all()
+            'candidates' => $candidate::all()
         ]);
     }
 
@@ -26,9 +26,13 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Candidate $candidate)
     {
-        //
+        return view('dashboard.candidates.edit', [
+            'title' => 'Ubah Bidang Pekerjaan',
+            'candidates' => $candidate::all()
+        ]);
+        
     }
 
     /**
