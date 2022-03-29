@@ -1,0 +1,78 @@
+@extends('dashboard.layouts.main')
+
+@section('container')
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>{{ $title }}</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-lg-8">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Ubah data pekerjaan</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/candidates/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Nama Kandidat</label>
+                <input type="text" class="form-control" placeholder="Nama Kandidat" name="name" value="{{ old('name', $workfield->name) }}" required>
+              </div>
+              
+              <!-- select -->
+              <div class="form-group">
+                <label>status penerimaan</label>
+                <select class="form-control" name="region_id" required>
+                  @foreach ($regions as $region)
+                      @if (old('region_id', $workfield->region_id) == $region->id)
+                          <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
+                      @else
+                          <option value="{{ $region->id }}">{{ $region->name }}</option>
+                      @endif
+                  @endforeach
+                </select>
+              </div>
+              <!-- radio -->
+              <div class="form-group">
+                <label>Tipe</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="type" value="Medical" {{ old('type', $workfield->type) == 'Medical'? 'checked' : ''}}>
+                  <label class="form-check-label">Medical</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="type" value="Non Medical" {{ old('type', $workfield->type) == 'Non Medical'? 'checked' : ''}}>
+                  <label class="form-check-label">Non Medical</label>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <!--/.col (left) -->
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+@endsection

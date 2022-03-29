@@ -14,12 +14,11 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(WorkField $workfield, Region $regions)
+    public function index(Candidate $candidate)
     {
-        return view('dashboard.candidates.show', [
+        return view('dashboard.candidates.index', [
             'title' => 'Rekruitment',
-            'workfield' => $workfield,
-            'region' => $regions
+            'candidates' => $candidate::all()
         ]);
     }
 
@@ -28,13 +27,13 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(WorkField $workfield, Region $regions)
+    public function create(Candidate $candidate)
     {
-        return view('dashboard.candidates.show', [
-            'title' => 'Rekruitment',
-            'workfield' => $workfield,
-            'region' => $regions
+        return view('dashboard.candidates.edit', [
+            'title' => 'Ubah Bidang Pekerjaan',
+            'candidates' => $candidate::all()
         ]);
+        
     }
 
     /**
