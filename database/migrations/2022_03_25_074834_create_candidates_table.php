@@ -25,7 +25,8 @@ class CreateCandidatesTable extends Migration
             $table->string('edu_level');
             $table->string('grad_year');
             $table->string('study_certificate');
-            $table->string('transcript');                       
+            $table->string('transcript');          
+                    
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@
 
     {{-- My Style --}}
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>OMSA Medic | {{ $title }}</title>
 </head>
@@ -214,37 +215,64 @@
     </script>
     
     <script>
-        $(document).ready(function() {
-        $('#wilayah').on('change', function() {
-           var regionsId = $(this).val();
-           if(regionsId) {
-               $.ajax({
-                   url: '/recruit/'+regionsId,
-                   type: "GET",
-                   data : {"_token":"{{ csrf_token() }}"},
-                   dataType: "json",
-                   success:function(data)
-                   {
-                     if(data){
-                        $('#posisi').empty();
-                        $('#posisi').append('<option hidden>Choose posisi</option>'); 
-                        $.each(data, function(key, posisi){
-                            $('select[name="posisi"]').append('<option value="'+ key +'">' + posisi.name+ '</option>');
-                        });
-                    }else{
-                        $('#posisi').empty();
-                    }
-                 }
-               });
-           }else{
-             $('#posisi').empty();
-           }
-        });
-        });
+        // $(document).ready(function() {
+        // $('#wilayah').on('change', function() {
+        //    var regionsId = $(this).val();
+        //    console.log(regionsId); 
+        //    if(regionsId) {
+        //        $.ajax({
+        //            url: '/recruit/'+regionsId,
+        //            type: "GET",
+        //            data : {"_token":"{{ csrf_token() }}"},
+        //            dataType: "json",
+        //            success:function(data)
+        //            {
+        //              if(data){
+        //                 $('#posisi').empty();
+        //                 $('#posisi').append('<option hidden>Choose posisi</option>'); 
+        //                 $.each(data, function(key, posisi){
+        //                     $('select[name="posisi"]').append('<option value="'+ key +'">' + posisi.name+ '</option>');
+        //                 });
+        //             }else{
+        //                 $('#posisi').empty();
+        //             }
+        //          }
+        //        });
+        //    }else{
+        //      $('#posisi').empty();
+        //    }
+        // });
+        // });
+
+        $(document).ready(function(){
+            $('#wilayah').on('change',function(){
+                var regionsId = $(this).val(); 
+                if(regionsId){
+                    $.ajax({
+                        url:'/recruit/'+regionsId, 
+                        type:'GET', 
+                        data:{"_token":"{{ csrf_token() }}"}, 
+                        dataType:"json", 
+                        success:function(data){ 
+                            if(data){
+                                $('#posisi').empty();
+                                $('#posisi').append('<option hidden>Choose posisi</option>'); 
+                                $.each(data, function(index, showdata){
+                                $('select[name="posisi"]').append('<option value="'+ showdata.id +'">' + showdata.name+ '</option>');
+                        })
+                            }
+                        }
+                    }); 
+                }
+            })
+        })
+
+            
+
     </script>
     
     <script src="js/jquery.min.js" type="text/javascript"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/config.js" type="text/javascript"></script>
     </body>
