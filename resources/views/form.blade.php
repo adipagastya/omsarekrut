@@ -57,11 +57,11 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tempat Lahir</label>
-                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="placeofbirth" required>
+                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="place_birth" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="dateofbirth" required>
+                        <input type="date" class="form-control" name="date_birth" required>
                     </div>
                 </div>
 
@@ -78,17 +78,17 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tingkat</label>
-                        <input type="text" class="form-control" placeholder="Tingkat" name="edulevel" required>
+                        <input type="text" class="form-control" placeholder="Tingkat" name="edu_level" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tahun</label>
-                        <input type="text" class="form-control" placeholder="Tahun" name="gradyear" required>
+                        <input type="text" class="form-control" placeholder="Tahun" name="grad_year" required>
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Scan Ijazah</label>
-                        <input type="file" class="form-control" name="certif_study" required>
+                        <input type="file" class="form-control" name="study_certificate" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Scan Transkrip</label>

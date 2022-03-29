@@ -40,40 +40,40 @@ class FormCandidateController extends Controller
     public function store(Request $request)
     {
 
-        dd($request); 
-        
+        // dd($request); 
+        // "profile" => "required|image|file",
         $validateData = $request->validate([
-            "profile" => "required|image|file|max:1024",
+           
             "name" => "required|max:255",
-            "phone" => "required|numeric|max:13", 
-            "email" => "required|email:dns",
-            "placeofbirth" => "required|max:255", 
-            "dateofbirth" => "required|max:255", 
+            "phone" => "required|max:13", 
+            "email" => "required",
+            "place_birth" => "required|max:255", 
+            "date_birth" => "required|max:255", 
             "studies"=> "required|max:255",
             "major" => "required|max:255",
-            "edulevel" => "required|max:255",
-            "gradyear" => "required|max:255",
-            "certif_study" => "required|image|file|max:1024", 
-            "transcript" => "required|image|file|max:1024", 
+            "edu_level" => "required|max:255",
+            "grad_year" => "required|max:255",
+            "study_certificate" => "required|image|file", 
+            "transcript" => "required|image|file", 
 
         ]); 
 
-        if($request->file('profile')){
-            $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
-        }
+        // if($request->file('profile')){
+        //     $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
+        // }
 
-        if($request->file('certif_study')){
-            $validateData['certif_study'] = $request->file('certif_study')->store('candidate-images'); 
+        if($request->file('study_certificate')){
+            $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 
         }
 
         if($request->file('transcript')){
             $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
         }
 
-        dd($validateData); 
+        // dd($validateData); 
         
-        // Candidate::create($validateData); 
-        // return redirect('/')->with('success', 'New post has been added'); 
+        Candidate::create($validateData); 
+        return redirect('/')->with('success', 'New post has been added'); 
 
     }
 
