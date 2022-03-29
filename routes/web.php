@@ -6,6 +6,7 @@ use App\Http\Controllers\ShowJobsByRegion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkFieldController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\FormCandidateController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Region;
@@ -30,7 +31,7 @@ use App\Models\WorkField;
 //     ]);
 // });
 
-Route::resource('/', CandidateController::class);
+Route::resource('/', FormCandidateController::class);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
