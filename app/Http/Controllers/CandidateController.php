@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -14,7 +15,10 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('form', [
+            'title' => 'Rekruitment',
+            'regions' => Region::all()
+        ]);
     }
 
     /**

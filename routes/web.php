@@ -5,6 +5,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\ShowJobsByRegion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkFieldController;
+use App\Http\Controllers\CandidateController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Region;
@@ -22,12 +23,14 @@ use App\Models\WorkField;
 |
 */
 
-Route::get('/', function () {
-    return view('form', [
-        'title' => 'Rekruitment',
-        'regions' => Region::all()
-    ]);
-});
+// Route::get('/', function () {
+//     return view('form', [
+//         'title' => 'Rekruitment',
+//         'regions' => Region::all()
+//     ]);
+// });
+
+Route::resource('/', CandidateController::class);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
