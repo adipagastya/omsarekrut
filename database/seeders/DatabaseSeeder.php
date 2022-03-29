@@ -55,7 +55,9 @@ class DatabaseSeeder extends Seeder
             'edu_level' => 'Sarjana 1',
             'grad_year' => '2019',
             'study_certificate' => 'certif.jpg',
-            'transcript' => 'transcript.jpg'
+            'transcript' => 'transcript.jpg',
+            'photo' => 'photo.jpg',
+            'status' => 'Belum Diproses'
         ]);
     }
 }
