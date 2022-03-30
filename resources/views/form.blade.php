@@ -28,7 +28,9 @@
 
     <div class="container mt-4">
     <h3 class="mb-5 mt-5 text-center"><b>{{ $title }}</b> - OMSA MEDIC</h3>
-    <form action="action/rekrut.php" method="POST" enctype="multipart/form-data">
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="d-flex" id="flexContainer">
             <div class="me-4 col-3" id="fotoForm">
                 <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
@@ -55,11 +57,11 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tempat Lahir</label>
-                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="placeofbirth" required>
+                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="place_birth" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="dateofbirth" required>
+                        <input type="date" class="form-control" name="date_birth" required>
                     </div>
                 </div>
 
@@ -76,70 +78,24 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tingkat</label>
-                        <input type="text" class="form-control" placeholder="Tingkat" name="edulevel" required>
+                        <input type="text" class="form-control" placeholder="Tingkat" name="edu_level" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tahun</label>
-                        <input type="text" class="form-control" placeholder="Tahun" name="gradyear" required>
+                        <input type="text" class="form-control" placeholder="Tahun" name="grad_year" required>
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Scan Ijazah</label>
-                        <input type="file" class="form-control" name="certif_study" required>
+                        <input type="file" class="form-control" name="study_certificate" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Scan Transkrip</label>
                         <input type="file" class="form-control" name="transcript" required>
                     </div>
                 </div>
-
-                <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
-
-                <div class="mb-3">
-                    <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year1">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description1"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year2">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2"></textarea>
-                </div>
-
-                <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
-
-                <div class="mb-3">
-                    <label class="form-label">Sertifikat Pendukung</label>
-                    <input type="file" class="form-control" name="certificate[]" multiple>
-                    <label class="form-label mt-2 text-muted">*upload hingga 5 file</label>
-                </div>
+          {{-- data ada difile cadangan --}}
 
                 <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
 
@@ -254,12 +210,15 @@
                         data:{"_token":"{{ csrf_token() }}"}, 
                         dataType:"json", 
                         success:function(data){ 
-                            if(data){
+                            if(data.length > 0){
                                 $('#posisi').empty();
-                                $('#posisi').append('<option hidden>Choose posisi</option>'); 
+                                $('#posisi').append('<option hidden>Pilih posisi</option>'); 
                                 $.each(data, function(index, showdata){
                                 $('select[name="posisi"]').append('<option value="'+ showdata.id +'">' + showdata.name+ '</option>');
-                        })
+                                })
+                            }else{
+                                $('#posisi').empty();
+                                $('#posisi').append('<option>Tidak ada lowongan </option>'); 
                             }
                         }
                     }); 
