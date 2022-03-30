@@ -15,12 +15,13 @@ class WorkFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, WorkField $workfield)
+    public function index(User $user, WorkField $workfield, Region $region)
     {
         return view('dashboard.workfields.index', [
             'title' => 'Bidang Pekerjaan',
             'userCount' => $user,
-            'workfields' => $workfield::all()
+            'workfields' => $workfield::all(),
+            'regions' => $region::all()
         ]);
     }
 

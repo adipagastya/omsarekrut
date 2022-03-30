@@ -22,7 +22,7 @@
           <!-- small box -->
           <div class="small-box bg-primary">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{ $candidateCount->count() }}</h3>
 
               <p>Kandidat</p>
             </div>
