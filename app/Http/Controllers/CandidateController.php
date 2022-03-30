@@ -14,12 +14,14 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Candidate $candidate, WorkField $workfield)
+    public function index(Candidate $candidate, WorkField $workfield, Region $region)
     {
         return view('dashboard.candidates.index', [
             'title' => 'Kandidat',
             'candidateCount' => $candidate,
             'workCount' => $workfield,
+            'regions' => $region::all(),
+            'workfields' => $workfield::all(),
             'candidates' => $candidate::all()
         ]);
     }
@@ -54,10 +56,14 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
+    public function show(Candidate $candidate, WorkField $workfield, Region $region)
     {
         return view('dashboard.candidates.show', [
             'title' => 'Detail Kandidat',
+            'candidateCount' => $candidate,
+            'regions' => $region::all(),
+            'workfields' => $workfield::all(),
+            'workCount' => $workfield,
             'candidate' => $candidate
         ]);
     }
@@ -68,12 +74,14 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Candidate $candidate, WorkField $workfield)
+    public function edit(Candidate $candidate, WorkField $workfield, Region $region)
     {
         return view('dashboard.candidates.edit', [
             'title' => 'Update Kandidat',
             'candidateCount' => $candidate,
             'workCount' => $workfield,
+            'workfields' => $workfield::all(),
+            'regions' => $region::all(),
             'candidate' => $candidate
         ]);
         

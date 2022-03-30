@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
             'transcript' => 'transcript.jpg',
             'profile' => 'photo.jpg',
             'application_date' => date("Y/m/d"),
+            'region_id' => 1,
             'workfield_id' => 1,
             'certificate_id' => 1342344
         ]);
