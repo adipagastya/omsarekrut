@@ -46,9 +46,13 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $candidates->name }}</td>
-                  <td>{{ $candidates->date }}</td>
-                  <td>{{ $candidates->region_id }}</td>
-                  <td>bidang pekerjaan</td>
+                  <td>{{ $candidates->application_date }}</td>
+                  <td> 
+                    {{ $candidates->region_id}}
+                    </td>
+                  <td>@foreach ($workfields as $workfield)
+                    {{ $candidates->workfield_id == $workfield->id ? $workfield->name : '' }}
+                    @endforeach </td>
                   <td>
                       <a href="/dashboard/candidates/{{ $candidates->id }}" class="badge bg-info p-2"><i class="fas fa-eye"></i></a>
                       <a href="/dashboard/candidates/{{ $candidates->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>

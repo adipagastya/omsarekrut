@@ -20,6 +20,7 @@ class CandidateController extends Controller
             'title' => 'Kandidat',
             'candidateCount' => $candidate,
             'workCount' => $workfield,
+            'workfields' => $workfield::all(),
             'candidates' => $candidate::all()
         ]);
     }
@@ -54,10 +55,12 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
+    public function show(Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.candidates.show', [
             'title' => 'Detail Kandidat',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'candidate' => $candidate
         ]);
     }
