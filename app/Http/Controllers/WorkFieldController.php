@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WorkField;
 use App\Models\Region;
 use App\Models\User;
+use App\Models\Candidate;
 use App\Http\Requests\StoreWorkFieldRequest;
 use App\Http\Requests\UpdateWorkFieldRequest;
 
@@ -15,11 +16,13 @@ class WorkFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, WorkField $workfield, Region $region)
+    public function index(User $user, WorkField $workfield, Region $region, Candidate $candidate)
     {
         return view('dashboard.workfields.index', [
             'title' => 'Bidang Pekerjaan',
             'userCount' => $user,
+            'workCount' => $workfield,
+            'candidateCount' => $candidate,
             'workfields' => $workfield::all(),
             'regions' => $region::all()
         ]);
@@ -30,10 +33,12 @@ class WorkFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Region $region, User $user)
+    public function create(Region $region, User $user, WorkField $workfield, Candidate $candidate)
     {
         return view('dashboard.workfields.create', [
             'title' => 'Tambah Bidang Pekarjaan',
+            'workCount' => $workfield,
+            'candidateCount' => $candidate,
             'regions' => $region::all(),
             'userCount' => $user::all()
         ]);
@@ -75,10 +80,12 @@ class WorkFieldController extends Controller
      * @param  \App\Models\WorkField  $workField
      * @return \Illuminate\Http\Response
      */
-    public function edit(WorkField $workfield, Region $region)
+    public function edit(WorkField $workfield, Region $region, Candidate $candidate)
     {
         return view('dashboard.workfields.edit', [
             'title' => 'Ubah Bidang Pekerjaan',
+            'workCount' => $workfield,
+            'candidateCount' => $candidate,
             'workfield' => $workfield,
             'regions' => $region::all()
         ]);

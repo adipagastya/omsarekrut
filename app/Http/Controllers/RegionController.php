@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Region;
 use App\Models\User;
+use App\Models\Candidate;
+use App\Models\WorkField;
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
 
@@ -14,11 +16,13 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Region $region)
+    public function index(User $user, Region $region, Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.regions.index', [
             'title' => 'Wilayah',
             'userCount' => $user,
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'regions' => $region::all()
         ]);
     }
@@ -28,10 +32,12 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create(User $user, Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.regions.create', [
             'title' => 'Tambah Wilayah',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'userCount' => $user::all()
         ]);
     }
@@ -72,10 +78,12 @@ class RegionController extends Controller
      * @param  \App\Models\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function edit(Region $region)
+    public function edit(Region $region, Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.regions.edit', [
             'title' => 'Ubah Wilayah',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'region' => $region
         ]);
     }

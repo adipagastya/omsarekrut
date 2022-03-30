@@ -14,10 +14,12 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Candidate $candidate)
+    public function index(Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.candidates.index', [
             'title' => 'Rekruitment',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'candidates' => $candidate::all()
         ]);
     }
@@ -64,10 +66,12 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Candidate $candidate)
+    public function edit(Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.candidates.edit', [
             'title' => 'Update Kandidat',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'candidate' => $candidate
         ]);
         

@@ -38,7 +38,7 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Kandidat
-                <span class="right badge badge-danger">New</span>
+                <span class="badge badge-info right">{{ $candidateCount->count() }}</span>
               </p>
             </a>
           </li>
@@ -48,8 +48,7 @@
               <p>
                 Bidang Pekerjaan
                 <i class="fas fa-angle-left right"></i>
-                {{-- <span class="badge badge-info right"><?= $userCount->count() ?></span> --}}
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">{{ $workCount->count() }} </span>
               </p>
             </a>
             <ul class="nav nav-treeview">
