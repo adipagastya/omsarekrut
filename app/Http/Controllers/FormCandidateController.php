@@ -55,12 +55,15 @@ class FormCandidateController extends Controller
             "grad_year" => "required|max:255",
             "study_certificate" => "required|image|file", 
             "transcript" => "required|image|file", 
+            "profile" => "required|image|file", 
+            "application_date" => "required", 
+            "workfield_id" => "required", 
 
         ]); 
 
-        // if($request->file('profile')){
-        //     $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
-        // }
+        if($request->file('profile')){
+            $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
+        }
 
         if($request->file('study_certificate')){
             $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 

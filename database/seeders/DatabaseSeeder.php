@@ -56,8 +56,9 @@ class DatabaseSeeder extends Seeder
             'grad_year' => '2019',
             'study_certificate' => 'certif.jpg',
             'transcript' => 'transcript.jpg',
-            'photo' => 'photo.jpg',
-            'status' => 'Belum Diproses'
+            'profile' => 'photo.jpg',
+            'application_date' => date("Y/m/d"),
+            'workfield_id' => 1
         ]);
     }
 }

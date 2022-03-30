@@ -26,8 +26,10 @@ class CreateCandidatesTable extends Migration
             $table->string('grad_year');
             $table->string('study_certificate');
             $table->string('transcript');
-            $table->string('photo');
-            $table->enum('status', ['Belum Diproses', 'Screening', 'Interview', 'Interview Lanjuatan', 'Diterima', 'Ditolak']);
+            $table->string('profile');
+            $table->enum('status', ['Belum Diproses', 'Screening', 'Interview', 'Interview Lanjuatan', 'Diterima', 'Ditolak'])->default('Belum Diproses');
+            $table->string('application_date');
+            $table->foreignId('workfield_id');
             $table->timestamps();
         });
     }

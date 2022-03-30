@@ -40,6 +40,8 @@
 
             <div class="col-9" id="idForm">
 
+                <input type="hidden" name="application_date" value="<?= date("Y/m/d") ?>">
+
                 <div class="mb-3"><b>DATA DIRI</b></div>
 
                 <div class="mb-3">
@@ -111,7 +113,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Posisi</label>
-                    <select class="form-select" name="posisi" id="posisi">
+                    <select class="form-select" name="workfield_id" id="posisi">
                         <option value="">Pilih Posisi</option>
                         <option disabled value="">------------------</option>
                     </select>
@@ -212,9 +214,9 @@
                         success:function(data){ 
                             if(data.length > 0){
                                 $('#posisi').empty();
-                                $('#posisi').append('<option hidden>Pilih posisi</option>'); 
+                                $('#posisi').append('<option hidden>Pilih Posisi</option>'); 
                                 $.each(data, function(index, showdata){
-                                $('select[name="posisi"]').append('<option value="'+ showdata.id +'">' + showdata.name+ '</option>');
+                                $('select[name="workfield_id"]').append('<option value="'+ showdata.id +'">' + showdata.name+ '</option>');
                                 })
                             }else{
                                 $('#posisi').empty();
