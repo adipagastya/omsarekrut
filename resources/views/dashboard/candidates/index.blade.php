@@ -47,9 +47,9 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $candidates->name }}</td>
                   <td>{{ $candidates->application_date }}</td>
-                  <td> 
-                    {{ $candidates->region_id}}
-                    </td>
+                  <td> @foreach ($regions as $region)
+                    {{ $candidates->region_id == $region->id ? $region->name : ''}}
+                    @endforeach</td>
                   <td>@foreach ($workfields as $workfield)
                     {{ $candidates->workfield_id == $workfield->id ? $workfield->name : '' }}
                     @endforeach </td>

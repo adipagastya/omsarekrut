@@ -29,6 +29,7 @@ class CreateCandidatesTable extends Migration
             $table->string('profile');
             $table->enum('status', ['Belum Diproses', 'Screening', 'Interview', 'Interview Lanjuatan', 'Diterima', 'Ditolak'])->default('Belum Diproses');
             $table->string('application_date');
+            $table->foreignId('region_id');
             $table->foreignId('workfield_id');
             $table->timestamps();
         });

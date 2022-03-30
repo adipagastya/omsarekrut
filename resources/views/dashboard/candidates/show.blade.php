@@ -31,23 +31,33 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Lengkap</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->name) }}" required>
+                <p>
+                  {{ $candidate->name }}
+                </p>
               </div>
               <div class="form-group">
                 <label>No Telepon</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->phone) }}" required>
+                <p>
+                  {{ $candidate->phone }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->email) }}" required>
+                <p>
+                  {{ $candidate->email }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Tempat Lahir</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->place_birth) }}" required>
+                <p>
+                  {{ $candidate->place_birth }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Tanggal Lahir</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->date_birth) }}" required>
+                <p>
+                {{ $candidate->date_birth }}
+                </p>
               </div>
             </div>
           </form>
@@ -66,31 +76,51 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Universitas / Institut / Sekolah</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->studies) }}" required>
+                <p>
+                  {{ $candidate->studies }}
+                </p>
               </div>
               <div class="form-group">
                 <label>No Telepon</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->phone) }}" required>
+                <p>
+                  {{ $candidate->phone }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Jurusan</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->major) }}" required>
+                <p>
+                  {{ $candidate->major }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Tingkat Pendidikan</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->edu_level) }}" required>
+                <p>
+                  {{ $candidate->edu_level }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Tahun Lulus</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->grad_year) }}" required>
+                <p>
+                  {{ $candidate->grad_year }}
+                </p>
               </div>
               <div class="form-group">
                 <label>Scan Ijazah</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->study_certificate) }}" required>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" value="{{ $candidate->study_certificate }}"> 
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat">Download</button>
+                  </span>
+                </div>
               </div>
               <div class="form-group">
                 <label>Scan Transcript</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->transcript ) }}" required>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" value="{{ $candidate->transcript  }}"> 
+                    <span class="input-group-append">
+                  <button type="button" class="btn btn-info btn-flat">Download</button>
+                  </span>
+                </div>
               </div>
             </div>
           </form>
@@ -109,15 +139,21 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Instansi</label>
-                <input type="text" class="form-control" name="name" value="Tes Instansi" required>
+                <p>
+                  Tes Instansi
+                </p>
               </div>
               <div class="form-group">
                 <label>Tahun</label>
-                <input type="text" class="form-control" name="name" value="19XX" required>
+                <p>
+                  19XX
+                </p>
               </div>
               <div class="form-group">
                 <label>Deskripsi</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="Tes Deskripsi" required>
+                <p>
+                  Tes Deskripsi
+                </p>
               </div>
             </div>
           </form>
@@ -136,11 +172,21 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Sertifikat - 1</label>
-                <input type="text" class="form-control" name="name" value="Sertifikat 1" required>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" value="sertifikat 1"> 
+                    <span class="input-group-append">
+                  <button type="button" class="btn btn-info btn-flat">Download</button>
+                  </span>
+                </div>
               </div>
               <div class="form-group">
                 <label>Sertifikat - 2</label>
-                <input type="text" class="form-control" name="name" value="Sertifikat 2" required>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" value="sertifikat 2"> 
+                    <span class="input-group-append">
+                  <button type="button" class="btn btn-info btn-flat">Download</button>
+                  </span>
+                </div>
               </div>
             </div>
           </form>
@@ -158,15 +204,24 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Wilayah</label>
-                <input type="text" class="form-control" name="name" value="Tes Wilayah" required>
+                <p>
+                  @foreach ($regions as $region)
+                  {{ $candidate->region_id == $region->id ? $region->name : '' }}@endforeach
+                </p>
               </div>
               <div class="form-group">
                 <label>Bidang Pekerjaan</label>
-                <input type="text" class="form-control" name="name" value="Tes Bidang" required>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}@endforeach
+                </p>
               </div>
               <div class="form-group">
                 <label>Tipe</label>
-                <input type="text" class="form-control" name="name" value="Medical / Non Medical" required>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->type : '' }}@endforeach
+                </p>
               </div>
             </div>
           </form>

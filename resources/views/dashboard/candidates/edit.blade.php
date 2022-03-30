@@ -29,26 +29,40 @@
             @method('put')
             @csrf
             <div class="card-body">
-              <div class="form-group">
-                <label>Nama Kandidat</label>
-                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->name) }}" required>
-              </div>
-              <div class="form-group">
-                <label>Tanggal Lamaran</label>
-                <input type="text" class="form-control" placeholder="Tanggal Lamaran" name="name">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label>Nama Kandidat</label>
+                  <p>
+                    {{ $candidate->name }}
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <label>Tanggal Lamaran</label>
+                  <p>
+                    {{ $candidate->application_date }}
+                  </p>
+                </div>
               </div>
               <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                  <label class="form-label">wilayah</label>
-                  <input type="text" class="form-control" placeholder="Wilayah" name="name">
+                  <label class="form-label">Bidang Pekerjaan</label>
+                  <p>
+                    @foreach ($workfields as $workfield)
+                    {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}
+                    @endforeach
+                  </p>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label">Bidang Pekerjaan</label>
-                  <input type="text" class="form-control" placeholder="Bidang Pekerjaan" name="name">
+                  <label class="form-label">Wilayah</label>
+                  <p>
+                    @foreach ($regions as $region)
+                    {{ $candidate->region_id == $region->id ? $region->name : ''}}
+                    @endforeach
+                  </p>
                 </div>
               </div>
               <div class="form-group">
-                <label>Wilayah</label>
+                <label>Status</label>
                 <select class="form-control" name="name">
                   <option value="{{ $candidate->status }}" selected>{{ $candidate->status }}</option>
                   <option value="" disabled>------------</option>
@@ -63,7 +77,7 @@
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Simpan</button>
-              <button type="submit" class="btn btn-primary">Kembali</button>
+              <a href="/dashboard/candidates" class="btn btn-danger">Kembali</a>
             </div>
           </form>
         </div>
