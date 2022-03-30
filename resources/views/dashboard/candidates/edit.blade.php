@@ -21,52 +21,53 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Ubah data pekerjaan</h3>
+            <h3 class="card-title">Data Diri</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/candidates/{{ $candidate->id }}">
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
             @method('put')
             @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Kandidat</label>
-                <input type="text" class="form-control" placeholder="Nama Kandidat" name="name" value="{{ old('name', $workfield->name) }}" required>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->name) }}" required>
               </div>
-              
-              <!-- select -->
               <div class="form-group">
-                <label>status penerimaan</label>
-                <select class="form-control" name="region_id" required>
-                  @foreach ($regions as $region)
-                      @if (old('region_id', $workfield->region_id) == $region->id)
-                          <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
-                      @else
-                          <option value="{{ $region->id }}">{{ $region->name }}</option>
-                      @endif
-                  @endforeach
+                <label>Tanggal Lamaran</label>
+                <input type="text" class="form-control" placeholder="Tanggal Lamaran" name="name">
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">wilayah</label>
+                  <input type="text" class="form-control" placeholder="Wilayah" name="name">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Bidang Pekerjaan</label>
+                  <input type="text" class="form-control" placeholder="Bidang Pekerjaan" name="name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Wilayah</label>
+                <select class="form-control" name="name">
+                  <option value="{{ $candidate->status }}" selected>{{ $candidate->status }}</option>
+                  <option value="" disabled>------------</option>
+                  <option value="Belum Diproses">Belum Diproses</option>
+                  <option value="Screening">Screening</option>
+                  <option value="Interview">Interview</option>
+                  <option value="Interview Lanjutan">Interview Lanjutan</option>
+                  <option value="Diterima">Diterima</option>
+                  <option value="Ditolak">Ditolak</option>
                 </select>
               </div>
-              <!-- radio -->
-              <div class="form-group">
-                <label>Tipe</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Medical" {{ old('type', $workfield->type) == 'Medical'? 'checked' : ''}}>
-                  <label class="form-check-label">Medical</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="type" value="Non Medical" {{ old('type', $workfield->type) == 'Non Medical'? 'checked' : ''}}>
-                  <label class="form-check-label">Non Medical</label>
-                </div>
-              </div>
             </div>
-            <!-- /.card-body -->
-
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-primary">Kembali</button>
             </div>
           </form>
         </div>
+        <!-- /.card -->
         <!-- /.card -->
       </div>
     </div>
