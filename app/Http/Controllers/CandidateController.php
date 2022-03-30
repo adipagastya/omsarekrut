@@ -17,7 +17,7 @@ class CandidateController extends Controller
     public function index(Candidate $candidate)
     {
         return view('dashboard.candidates.index', [
-            'title' => 'Rekruitment',
+            'title' => 'Kandidat',
             'candidates' => $candidate::all()
         ]);
     }

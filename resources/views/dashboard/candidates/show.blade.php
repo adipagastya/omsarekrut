@@ -53,6 +53,7 @@
           </form>
         </div>
         <!-- /.card -->
+
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Pendidikan Terakhir</h3>
@@ -90,6 +91,82 @@
               <div class="form-group">
                 <label>Scan Transcript</label>
                 <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="{{ old('name', $candidate->transcript ) }}" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Pengalaman Kerja</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Nama Instansi</label>
+                <input type="text" class="form-control" name="name" value="Tes Instansi" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun</label>
+                <input type="text" class="form-control" name="name" value="19XX" required>
+              </div>
+              <div class="form-group">
+                <label>Deskripsi</label>
+                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" value="Tes Deskripsi" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Sertifikat Penunjuang</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Sertifikat - 1</label>
+                <input type="text" class="form-control" name="name" value="Sertifikat 1" required>
+              </div>
+              <div class="form-group">
+                <label>Sertifikat - 2</label>
+                <input type="text" class="form-control" name="name" value="Sertifikat 2" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Bidang Pekerjaan</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Wilayah</label>
+                <input type="text" class="form-control" name="name" value="Tes Wilayah" required>
+              </div>
+              <div class="form-group">
+                <label>Bidang Pekerjaan</label>
+                <input type="text" class="form-control" name="name" value="Tes Bidang" required>
+              </div>
+              <div class="form-group">
+                <label>Tipe</label>
+                <input type="text" class="form-control" name="name" value="Medical / Non Medical" required>
               </div>
             </div>
           </form>
