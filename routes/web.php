@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Region;
 use App\Models\User;
 use App\Models\WorkField;
+use App\Models\Candidate;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,7 @@ Route::get('/dashboard', function () {
         'regionCount' => Region::all(),
         'userCount' => User::all(),
         'workCount' => WorkField::all(),
-
+        'candidateCount' => Candidate::all(),
     ]);
 })->middleware('auth');
 

@@ -42,11 +42,14 @@
               </thead>
               <tbody>
                 @foreach ($workfields as $workfield)
+                
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $workfield->name }}</td>
                   <td>{{ $workfield->type }}</td>
-                  <td>{{ $workfield->region_id }}</td>
+                  <td>@foreach ($regions as $region)
+                    {{ $workfield->region_id == $region->id ? $region->name : '' }}
+                    @endforeach</td>
                   <td>
                       <a href="/dashboard/workfields/{{ $workfield->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
                       <form action="/dashboard/workfields/{{ $workfield->id }}" method="post" class="d-inline">
@@ -57,6 +60,8 @@
                   </td>
                 </tr>
                 @endforeach
+                
+                
             </table>
           </div>
           <!-- /.card-body -->

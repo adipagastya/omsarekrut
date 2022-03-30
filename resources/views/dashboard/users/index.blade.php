@@ -46,7 +46,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->is_admin }}</td>
+                  <td>{{ $user->is_admin == 1 ? 'Admin' : 'User' }}</td>
                   <td>
                       <a href="/dashboard/users/{{ $user->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
                       <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">

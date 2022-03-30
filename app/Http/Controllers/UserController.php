@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Candidate;
+use App\Models\WorkField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
@@ -15,10 +17,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(User $user, Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.users.index', [
             'title' => 'Role User',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'users' => $user::all(),
         ]);
     }
@@ -28,10 +32,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.users.create', [
-            'title' => 'Tambah Role User'
+            'title' => 'Tambah Role User',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield
         ]);
     }
 
@@ -75,10 +81,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $user, Candidate $candidate, WorkField $workfield)
     {
         return view('dashboard.users.edit', [
             'title' => 'Ubah Role User',
+            'candidateCount' => $candidate,
+            'workCount' => $workfield,
             'user' => $user
         ]);
     }
