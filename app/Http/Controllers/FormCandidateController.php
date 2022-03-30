@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Models\Region;
 
@@ -41,7 +42,6 @@ class FormCandidateController extends Controller
     {
 
         // dd($request); 
-        // "profile" => "required|image|file",
         $validateData = $request->validate([
            
             "name" => "required|max:255",
@@ -57,9 +57,13 @@ class FormCandidateController extends Controller
             "transcript" => "required|image|file", 
             "profile" => "required|image|file", 
             "application_date" => "required", 
-            "workfield_id" => "required", 
+            "workfield_id" => "required",
+            "img_address" => "required",
+            "img_address.*" => "required",
 
         ]); 
+
+        $validateData['certificate_id'] = $this->generateUniqueCode();
 
         if($request->file('profile')){
             $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
@@ -72,6 +76,21 @@ class FormCandidateController extends Controller
         if($request->file('transcript')){
             $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
         }
+
+        $certificates = [];
+        if($request->hasfile('img_address'))
+         {
+            foreach($request->file('img_address') as $certificate)
+            {
+                $name = time().rand(1,100).'.'.$certificate->extension();
+                $certificate->move(public_path('certificates'), $name);  
+                $certificates[] = $name;  
+            }
+         }
+  
+         $certificate= new Certificate();
+         $certificate->filenames = $certificates;
+         $certificate->save();
 
         // dd($validateData); 
         
@@ -123,5 +142,14 @@ class FormCandidateController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Candidate::where("certificate_id", "=", $code)->first());
+  
+        return $code;
     }
 }

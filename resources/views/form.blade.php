@@ -35,7 +35,7 @@
             <div class="me-4 col-3" id="fotoForm">
                 <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
                 <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" required />
-                <button class="btn btn-primary mt-3" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</button>
+                <a class="btn btn-primary mt-3" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
             </div>
 
             <div class="col-9" id="idForm">
@@ -98,6 +98,25 @@
                     </div>
                 </div>
           {{-- data ada difile cadangan --}}
+
+                <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
+
+                <div class="mb-3">
+                    <div class="input-group hdtuto control-group lst increment" >
+                        <input type="file" name="certificate[]" class="myfrm form-control">
+                        <div class="input-group-btn"> 
+                          <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+                        </div>
+                      </div>
+                      <div class="clone hide">
+                        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                          <input type="file" name="certificate[]" class="myfrm form-control">
+                          <div class="input-group-btn"> 
+                            <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
 
                 <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
 
@@ -173,34 +192,6 @@
     </script>
     
     <script>
-        // $(document).ready(function() {
-        // $('#wilayah').on('change', function() {
-        //    var regionsId = $(this).val();
-        //    console.log(regionsId); 
-        //    if(regionsId) {
-        //        $.ajax({
-        //            url: '/recruit/'+regionsId,
-        //            type: "GET",
-        //            data : {"_token":"{{ csrf_token() }}"},
-        //            dataType: "json",
-        //            success:function(data)
-        //            {
-        //              if(data){
-        //                 $('#posisi').empty();
-        //                 $('#posisi').append('<option hidden>Choose posisi</option>'); 
-        //                 $.each(data, function(key, posisi){
-        //                     $('select[name="posisi"]').append('<option value="'+ key +'">' + posisi.name+ '</option>');
-        //                 });
-        //             }else{
-        //                 $('#posisi').empty();
-        //             }
-        //          }
-        //        });
-        //    }else{
-        //      $('#posisi').empty();
-        //    }
-        // });
-        // });
 
         $(document).ready(function(){
             $('#wilayah').on('change',function(){
@@ -230,6 +221,18 @@
 
             
 
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $(".btn-success").click(function(){ 
+            var lsthmtl = $(".clone").html();
+            $(".increment").after(lsthmtl);
+        });
+        $("body").on("click",".btn-danger",function(){ 
+            $(this).parents(".hdtuto").remove();
+        });
+        });
     </script>
     
     <script src="js/jquery.min.js" type="text/javascript"></script>
