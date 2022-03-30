@@ -29,10 +29,7 @@ class CandidateController extends Controller
      */
     public function create(Candidate $candidate)
     {
-        return view('dashboard.candidates.edit', [
-            'title' => 'Ubah Bidang Pekerjaan',
-            'candidates' => $candidate::all()
-        ]);
+        
         
     }
 
@@ -71,10 +68,11 @@ class CandidateController extends Controller
      */
     public function edit(Candidate $candidate)
     {
-        return view('dashboard.candidates.show', [
-            'title' => 'Detail Kandidat',
+        return view('dashboard.candidates.edit', [
+            'title' => 'Update Kandidat',
             'candidate' => $candidate
         ]);
+        
     }
 
     /**
@@ -86,7 +84,16 @@ class CandidateController extends Controller
      */
     public function update(Request $request, Candidate $candidate)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:100',
+            'region_id' => 'required',
+            'type' => 'required'
+        ]);
+
+        Candidate::where('id', $candidate->id)
+            ->update($validatedData);
+
+            return redirect('/dashboard/candidates')->with('success', 'Data berhasil diubah');
     }
 
     /**
