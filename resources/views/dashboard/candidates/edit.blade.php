@@ -25,7 +25,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+          <form method="post" action="/dashboard/candidates/{{ $candidate->id }}">
             @method('put')
             @csrf
             <div class="card-body">
@@ -63,7 +63,7 @@
               </div>
               <div class="form-group">
                 <label>Status</label>
-                <select class="form-control" name="name">
+                <select class="form-control" name="status">
                   <option value="{{ $candidate->status }}" selected>{{ $candidate->status }}</option>
                   <option value="" disabled>------------</option>
                   <option value="Belum Diproses">Belum Diproses</option>
