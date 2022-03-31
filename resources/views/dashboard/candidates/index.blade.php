@@ -55,7 +55,7 @@
                     @endforeach </td>
                   <td>
                       <a href="/dashboard/candidates/{{ $candidates->id }}" class="badge bg-info p-2"><i class="fas fa-eye"></i></a>
-                      <a href="/dashboard/candidates/{{ $candidates->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
+                      <a href="/dashboard/candidates/{{ $candidates->id }}/edit" class="badge bg-success p-2"><i class="fas fa-check"></i></a>
                       <form action="/dashboard/candidates/{{ $candidates->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf

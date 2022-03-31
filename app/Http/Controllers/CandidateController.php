@@ -97,9 +97,8 @@ class CandidateController extends Controller
     public function update(Request $request, Candidate $candidate)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:100',
-            'region_id' => 'required',
-            'type' => 'required'
+            'status' => 'required'
+            
         ]);
 
         Candidate::where('id', $candidate->id)
