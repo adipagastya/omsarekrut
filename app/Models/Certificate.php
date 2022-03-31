@@ -10,4 +10,9 @@ class Certificate extends Model
     protected $guarded = ['id'];
     
     use HasFactory;
+
+    public function setFilenamesAttribute($value)
+    {
+        $this->attributes['img_address'] = json_encode($value);
+    }
 }

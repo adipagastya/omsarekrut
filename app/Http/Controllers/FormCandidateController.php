@@ -78,21 +78,22 @@ class FormCandidateController extends Controller
         }
 
         $certificates = [];
-        if($request->hasfile('img_address'))
+        if($request->file('img_address'))
          {
             foreach($request->file('img_address') as $certificate)
             {
                 $name = time().rand(1,100).'.'.$certificate->extension();
-                $certificate->move(public_path('certificates'), $name);  
+                $certificate->move(public_path('certificates'), $name);    
                 $certificates[] = $name;  
             }
          }
   
          $certificate= new Certificate();
-         $certificate->filenames = $certificates;
+         $certificate->img_address = $certificates;
+        //  $certificate->id_candidate = $validateData['certificate_id'];
          $certificate->save();
 
-        // dd($validateData); 
+        //  dd($validateData); 
         
         Candidate::create($validateData); 
         return redirect('/')->with('success', 'New post has been added'); 
