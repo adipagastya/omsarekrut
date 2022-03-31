@@ -21,6 +21,21 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
+            <h3 class="card-title">Foto Kandidat</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->profile) }}" alt="Photo">
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+        <div class="card card-primary">
+          <div class="card-header">
             <h3 class="card-title">Data Diri</h3>
           </div>
           <!-- /.card-header -->
@@ -163,7 +178,7 @@
         @endforeach
         <!-- /.card -->
 
-        <div class="card card-primary">
+        {{-- <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Sertifikat Penunjuang</h3>
           </div>
@@ -193,7 +208,7 @@
               </div>
             </div>
           </form>
-        </div>
+        </div> --}}
         <!-- /.card -->
         <div class="card card-primary">
           <div class="card-header">

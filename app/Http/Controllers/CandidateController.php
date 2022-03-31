@@ -79,7 +79,7 @@ class CandidateController extends Controller
     public function edit(Candidate $candidate, WorkField $workfield, Region $region)
     {
         return view('dashboard.candidates.edit', [
-            'title' => 'Update Kandidat',
+            'title' => 'Ubah Status Kandidat',
             'candidateCount' => $candidate,
             'workCount' => $workfield,
             'workfields' => $workfield::all(),
@@ -117,6 +117,7 @@ class CandidateController extends Controller
      */
     public function destroy(Candidate $candidate)
     {
-        //
+        Candidate::destroy($candidate->id);
+        return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
     }
 }

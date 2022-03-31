@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     {{-- My Style --}}
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/formstyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>OMSA Medic | {{ $title }}</title>
@@ -29,6 +29,12 @@
     <div class="container mt-4">
     <h3 class="mb-5 mt-5 text-center"><b>{{ $title }}</b> - OMSA MEDIC</h3>
 
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        </div>
+    @endif
+    
     <form action="/" method="post" enctype="multipart/form-data">
         @csrf
         <div class="d-flex" id="flexContainer">
@@ -54,7 +60,12 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">E-Mail</label>
-                    <input type="email" class="form-control" placeholder="E-Mail" name="email" required>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
@@ -103,11 +114,11 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name">
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year">
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
@@ -115,11 +126,11 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1">
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year1">
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year1" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
@@ -127,11 +138,11 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2">
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year2">
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year2" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
@@ -161,7 +172,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Wilayah</label>
-                    <select class="form-select" name="region_id" id="wilayah">
+                    <select class="form-select" name="region_id" id="wilayah" required>
                         <option selected>Pilih Wilayah</option>
                         <option disabled value="">------------------</option>
                         @foreach ($regions as $region)
@@ -171,12 +182,12 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Posisi</label>
-                    <select class="form-select" name="workfield_id" id="posisi">
+                    <select class="form-select" name="workfield_id" id="posisi" required>
                         <option value="">Pilih Posisi</option>
                         <option disabled value="">------------------</option>
                     </select>
                 </div>
-                <button class="w-20 btn btn-outline-success" type="submit" id="btSubmit">Simpan</button>
+                <button class="w-20 btn btn-success" type="submit" id="btSubmit" onclick="return confirm('Pastikan semua data sudah benar!, kirim lamaran?')">Kirim Lamaran</button>
             </div>
         </div>
     </form>

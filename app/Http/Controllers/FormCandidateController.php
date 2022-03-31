@@ -47,7 +47,7 @@ class FormCandidateController extends Controller
            
             "name" => "required|max:255",
             "phone" => "required|max:13", 
-            "email" => "required",
+            "email" => "required|email|unique:users",
             "place_birth" => "required|max:255", 
             "date_birth" => "required|max:255", 
             "studies"=> "required|max:255",
@@ -107,7 +107,7 @@ class FormCandidateController extends Controller
         //  dd($validateData); 
         
         Candidate::create($validateData); 
-        return redirect('/')->with('success', 'New post has been added'); 
+        return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
 
     }
 

@@ -38,6 +38,7 @@
                   <th>Tanggal Lamaran</th>
                   <th>Wilayah</th>
                   <th>Bidang Pekerjaan </th>
+                  <th>Status </th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -53,6 +54,7 @@
                   <td>@foreach ($workfields as $workfield)
                     {{ $candidates->workfield_id == $workfield->id ? $workfield->name : '' }}
                     @endforeach </td>
+                  <td>{{ $candidates->status }}</td>
                   <td>
                       <a href="/dashboard/candidates/{{ $candidates->id }}" class="badge bg-info p-2"><i class="fas fa-eye"></i></a>
                       <a href="/dashboard/candidates/{{ $candidates->id }}/edit" class="badge bg-success p-2"><i class="fas fa-check"></i></a>

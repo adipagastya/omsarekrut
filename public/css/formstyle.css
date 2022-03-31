@@ -1,0 +1,51 @@
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #ff9f9f;
+    display: inline-block;
+    position: absolute;
+    left: 19px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 10px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #b34c4c;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+@media (max-width: 576px) { 
+
+    #flexContainer {
+        flex-direction: column;
+    }
+
+    #fotoForm {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #idForm {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    #btSubmit {
+        width: 100%;
+    }
+ }
