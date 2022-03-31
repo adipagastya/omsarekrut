@@ -126,7 +126,8 @@
           </form>
         </div>
         <!-- /.card -->
-
+        @foreach ($workexps as $workexp)
+        @if ($candidate->work_exp_id == $workexp->id_candidate)
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Pengalaman Kerja</h3>
@@ -140,24 +141,26 @@
               <div class="form-group">
                 <label>Nama Instansi</label>
                 <p>
-                  Tes Instansi
+                  {{ $workexp->name }}
                 </p>
               </div>
               <div class="form-group">
                 <label>Tahun</label>
                 <p>
-                  19XX
+                  {{ $workexp->year }}
                 </p>
               </div>
               <div class="form-group">
                 <label>Deskripsi</label>
                 <p>
-                  Tes Deskripsi
+                  {{ $workexp->description }}
                 </p>
               </div>
             </div>
           </form>
         </div>
+        @endif
+        @endforeach
         <!-- /.card -->
 
         <div class="card card-primary">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Region;
+use App\Models\WorkExperience;
 use App\Models\WorkField;
 use Illuminate\Http\Request;
 
@@ -56,13 +57,14 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate, WorkField $workfield, Region $region)
+    public function show(Candidate $candidate, WorkField $workfield, Region $region, WorkExperience $workexp)
     {
         return view('dashboard.candidates.show', [
             'title' => 'Detail Kandidat',
             'candidateCount' => $candidate,
             'regions' => $region::all(),
             'workfields' => $workfield::all(),
+            'workexps' => $workexp::all(),
             'workCount' => $workfield,
             'candidate' => $candidate
         ]);

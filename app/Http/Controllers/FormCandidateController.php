@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\WorkExperience;
 
 class FormCandidateController extends Controller
 {
@@ -57,13 +58,15 @@ class FormCandidateController extends Controller
             "transcript" => "required|image|file", 
             "profile" => "required|image|file", 
             "application_date" => "required", 
+            "region_id" => "required",
             "workfield_id" => "required",
-            "img_address" => "required",
-            "img_address.*" => "required",
+            // "img_address" => "required",
+            // "img_address.*" => "required",
 
         ]); 
 
         $validateData['certificate_id'] = $this->generateUniqueCode();
+        $validateData['work_exp_id'] = $this->generateUniqueCode();
 
         if($request->file('profile')){
             $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
@@ -77,21 +80,29 @@ class FormCandidateController extends Controller
             $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
         }
 
-        $certificates = [];
-        if($request->file('img_address'))
-         {
-            foreach($request->file('img_address') as $certificate)
-            {
-                $name = time().rand(1,100).'.'.$certificate->extension();
-                $certificate->move(public_path('certificates'), $name);    
-                $certificates[] = $name;  
-            }
-         }
+        $data = [
+            ['name'=>$request->work_name, 'year'=> $request->work_year, 'description'=> $request->description, 'id_candidate'=> $validateData['work_exp_id']],
+            ['name'=>$request->work_name1, 'year'=> $request->work_year1, 'description'=> $request->description1, 'id_candidate'=> $validateData['work_exp_id']],
+            ['name'=>$request->work_name2, 'year'=> $request->work_year2, 'description'=> $request->description2, 'id_candidate'=> $validateData['work_exp_id']],
+        ];
+
+        WorkExperience::insert($data);
+
+        // $certificates = [];
+        // if($request->file('img_address'))
+        //  {
+        //     foreach($request->file('img_address') as $certificate)
+        //     {
+        //         $name = time().rand(1,100).'.'.$certificate->extension();
+        //         $certificate->move(public_path('certificates'), $name);    
+        //         $certificates[] = $name;  
+        //     }
+        //  }
   
-         $certificate= new Certificate();
-         $certificate->img_address = $certificates;
+        //  $certificate= new Certificate();
+        //  $certificate->img_address = $certificates;
         //  $certificate->id_candidate = $validateData['certificate_id'];
-         $certificate->save();
+        //  $certificate->save();
 
         //  dd($validateData); 
         

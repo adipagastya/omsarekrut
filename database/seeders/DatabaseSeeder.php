@@ -60,7 +60,8 @@ class DatabaseSeeder extends Seeder
             'application_date' => date("Y/m/d"),
             'region_id' => 1,
             'workfield_id' => 1,
-            'certificate_id' => 1342344
+            'certificate_id' => 13344,
+            'work_exp_id' => 12344
         ]);
     }
 }

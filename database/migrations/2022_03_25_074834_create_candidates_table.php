@@ -32,6 +32,7 @@ class CreateCandidatesTable extends Migration
             $table->foreignId('region_id');
             $table->foreignId('workfield_id');
             $table->foreignId('certificate_id');
+            $table->foreignId('work_exp_id');
             $table->timestamps();
         });
     }
