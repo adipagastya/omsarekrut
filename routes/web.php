@@ -6,6 +6,8 @@ use App\Http\Controllers\ShowJobsByRegion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkFieldController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\DonwloadImageController;
+use App\Http\Controllers\DownloadImageController;
 use App\Http\Controllers\FormCandidateController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +58,4 @@ Route::resource('/dashboard/candidates', CandidateController::class)->middleware
 
 
 Route::get('/recruit/{idregion}',[ShowJobsByRegion::class,'showJobsByRegion'] ); 
+Route::get('storage/{imagename}', [DownloadImageController::class, 'getImage'])->name('getimage'); 
