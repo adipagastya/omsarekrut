@@ -51,6 +51,8 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/regions', RegionController::class)->middleware('auth');
 Route::resource('/dashboard/workfields', WorkFieldController::class)->middleware('auth');
-Route::resource('/dashboard/candidates', CandidateController::class);
+Route::resource('/dashboard/candidates', CandidateController::class)->middleware('admin');
+
+
 
 Route::get('/recruit/{idregion}',[ShowJobsByRegion::class,'showJobsByRegion'] ); 
