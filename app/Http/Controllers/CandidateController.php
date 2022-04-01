@@ -115,9 +115,10 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Candidate $candidate)
+    public function destroy(Candidate $candidate, WorkExperience $workexperience)
     {
         Candidate::destroy($candidate->id);
+        WorkExperience::where('id_candidate','=', $candidate->work_exp_id)->delete();
         return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -14,6 +14,9 @@ use App\Models\User;
 use App\Models\WorkField;
 use App\Models\Candidate;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +59,5 @@ Route::resource('/dashboard/candidates', CandidateController::class)->middleware
 
 
 Route::get('/recruit/{idregion}',[ShowJobsByRegion::class,'showJobsByRegion'] ); 
+
+
