@@ -119,7 +119,7 @@
                   {{ $candidate->grad_year }}
                 </p>
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label>Scan Ijazah</label>
                 <div class="input-group input-group-sm">
                   <input type="text" class="form-control" value="{{ $candidate->study_certificate }}"> 
@@ -139,10 +139,41 @@
                   {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
                   </span>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </form>
         </div>
+
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan Ijasah</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->study_certificate) }}" alt="Photo">
+            </div>
+          </form>
+        </div>
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan Transcript</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->transcript) }}" alt="Photo">
+            </div>
+          </form>
+        </div>
+
         <!-- /.card -->
         @foreach ($workexps as $workexp)
         @if ($candidate->work_exp_id == $workexp->id_candidate)
