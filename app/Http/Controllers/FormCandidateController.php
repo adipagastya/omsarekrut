@@ -68,17 +68,17 @@ class FormCandidateController extends Controller
         $validateData['certificate_id'] = $this->generateUniqueCode();
         $validateData['work_exp_id'] = $this->generateUniqueCode();
 
-        if($request->file('profile')){
-            $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
-        }
+        // if($request->file('profile')){
+        //     $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
+        // }
 
-        if($request->file('study_certificate')){
-            $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 
-        }
+        // if($request->file('study_certificate')){
+        //     $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 
+        // }
 
-        if($request->file('transcript')){
-            $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
-        }
+        // if($request->file('transcript')){
+        //     $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
+        // }
 
         $data = [
             ['name'=>$request->work_name, 'year'=> $request->work_year, 'description'=> $request->description, 'id_candidate'=> $validateData['work_exp_id']],
@@ -86,28 +86,30 @@ class FormCandidateController extends Controller
             ['name'=>$request->work_name2, 'year'=> $request->work_year2, 'description'=> $request->description2, 'id_candidate'=> $validateData['work_exp_id']],
         ];
 
-        WorkExperience::insert($data);
+        // WorkExperience::insert($data);
 
-        // $certificates = [];
-        // if($request->file('img_address'))
-        //  {
-        //     foreach($request->file('img_address') as $certificate)
-        //     {
-        //         $name = time().rand(1,100).'.'.$certificate->extension();
-        //         $certificate->move(public_path('certificates'), $name);    
-        //         $certificates[] = $name;  
-        //     }
-        //  }
+        $certificates = [];
+        if($request->file('img_address'))
+         {
+
+            foreach($request->file('img_address') as $certificate)
+            {
+                $name = time().rand(1,100).'.'.$certificate->extension();
+                $certificate->move(public_path('certificates'), $name);    
+                $certificates[] = $name;  
+            }
+            // dd($certificates); 
+         }
   
-        //  $certificate= new Certificate();
-        //  $certificate->img_address = $certificates;
-        //  $certificate->id_candidate = $validateData['certificate_id'];
-        //  $certificate->save();
+         $certificateobject = new Certificate();
+         $certificateobject ->img_address = $certificates;
+         $certificateobject ->id_candidate = $validateData['certificate_id'];
+         $certificateobject ->save();
 
-        //  dd($validateData); 
+         dd($validateData); 
         
-        Candidate::create($validateData); 
-        return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
+        // Candidate::create($validateData); 
+        // return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
 
     }
 
