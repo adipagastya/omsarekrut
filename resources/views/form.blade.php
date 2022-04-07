@@ -102,10 +102,12 @@
                     <div class="col-md-6">
                         <label class="form-label">Scan Ijazah</label>
                         <input type="file" class="form-control" name="study_certificate" required>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Scan Transkrip</label>
                         <input type="file" class="form-control" name="transcript" required>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                     </div>
                 </div>
           {{-- data ada difile cadangan --}}

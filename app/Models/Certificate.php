@@ -11,8 +11,8 @@ class Certificate extends Model
     
     use HasFactory;
 
-    public function setFilenamesAttribute($value)
-    {
-        $this->attributes['img_address'] = json_encode($value);
-    }
+    // public function setFilenamesAttribute($value)
+    // {
+    //     $this->attributes['img_address'] = json_encode($value);
+    // }
 }
