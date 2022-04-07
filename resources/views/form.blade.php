@@ -149,7 +149,7 @@
                     <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2"></textarea>
                 </div>
 
-                {{-- <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
+                <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
 
                 <div class="mb-3">
                     <div class="input-group hdtuto control-group lst increment" >
@@ -166,7 +166,7 @@
                           </div>
                         </div>
                       </div>
-                </div> --}}
+                </div>
 
                 <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
 
