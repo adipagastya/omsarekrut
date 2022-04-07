@@ -114,15 +114,15 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" required>
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year" required>
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year" value="0" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
+                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description">Deskripsi</textarea>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
@@ -149,7 +149,7 @@
                     <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2">Deskripsi</textarea>
                 </div>
 
-                {{-- <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
+                <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
 
                 <div class="mb-3">
                     <div class="input-group hdtuto control-group lst increment" >
@@ -166,7 +166,7 @@
                           </div>
                         </div>
                       </div>
-                </div> --}}
+                </div>
 
                 <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
 
