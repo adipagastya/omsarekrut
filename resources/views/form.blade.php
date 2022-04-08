@@ -209,6 +209,11 @@
                         <div class="input-group-btn"> 
                           <button class="btn btn-success btntambah" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
                         </div>
+                        @error('img_address[]')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                        @enderror
                       </div>
                       <div class="clone hide d-none">
                         <div class="hdtuto control-group lst input-group" style="margin-top:10px">
@@ -216,12 +221,12 @@
                           <div class="input-group-btn"> 
                             <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
                           </div>
+                          @error('img_address[]')
+                              <div class="invalid-feedback">
+                              {{ $message }}
+                              </div>
+                          @enderror
                         </div>
-                        @error('img_address[]')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
                     </div>
                     </div>
                 </div>
