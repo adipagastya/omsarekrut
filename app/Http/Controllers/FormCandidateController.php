@@ -68,17 +68,17 @@ class FormCandidateController extends Controller
         $validateData['certificate_id'] = $this->generateUniqueCode();
         $validateData['work_exp_id'] = $this->generateUniqueCode();
 
-        if($request->file('profile')){
-            $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
-        }
+        // if($request->file('profile')){
+        //     $validateData['profile'] = $request->file('profile')->store('candidate-images'); 
+        // }
 
-        if($request->file('study_certificate')){
-            $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 
-        }
+        // if($request->file('study_certificate')){
+        //     $validateData['study_certificate'] = $request->file('study_certificate')->store('candidate-images'); 
+        // }
 
-        if($request->file('transcript')){
-            $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
-        }
+        // if($request->file('transcript')){
+        //     $validateData['transcript'] = $request->file('transcript')->store('candidate-images'); 
+        // }
 
         $data = [
             ['name'=>$request->work_name, 'year'=> $request->work_year, 'description'=> $request->description, 'id_candidate'=> $validateData['work_exp_id']],
@@ -104,6 +104,34 @@ class FormCandidateController extends Controller
 
             }
          }
+
+        
+         if($request->hasFile('profile')){
+            $image = $request->file('profile');
+            $name = time().rand(1,100).'.'.$image->extension();
+            // $image_name = $image->getClientOriginalName();
+            $image->move(public_path('candidate-image'),$name);
+        
+            $saveprofile = "candidate-image" . $image;
+        }
+
+        if($request->hasFile('study_certificate')){
+            $image = $request->file('study_certificate');
+            $name = time().rand(1,100).'.'.$image->extension();
+            // $image_name = $image->getClientOriginalName();
+            $image->move(public_path('candidate-image'),$name);
+        
+            $saveprofile = "candidate-image" . $image;
+        }
+
+        if($request->hasFile('transcript')){
+            $image = $request->file('transcript');
+            $name = time().rand(1,100).'.'.$image->extension();
+            // $image_name = $image->getClientOriginalName();
+            $image->move(public_path('candidate-image'),$name);
+        
+            $saveprofile = "candidate-image" . $image;
+        }
   
         //  $certificate= new Certificate();
         //  $certificate->img_address = json_encode($certificates);

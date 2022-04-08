@@ -6,8 +6,10 @@ use App\Models\Candidate;
 use App\Models\Region;
 use App\Models\WorkExperience;
 use App\Models\WorkField;
+use Faker\Core\File as CoreFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CandidateController extends Controller
 {
@@ -121,6 +123,7 @@ class CandidateController extends Controller
         Candidate::destroy($candidate->id);
         WorkExperience::where('id_candidate','=', $candidate->work_exp_id)->delete();
         Storage::delete([$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
+        // Storage::delete(public_path().'/candidate-image/'.[$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
         return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
     }
-}
+}   
