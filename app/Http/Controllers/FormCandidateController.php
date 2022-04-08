@@ -60,8 +60,8 @@ class FormCandidateController extends Controller
             "application_date" => "required", 
             "region_id" => "required",
             "workfield_id" => "required",
-            // "img_address" => "required",
-            // "img_address.*" => "required",
+            "img_address" => "required",
+            "img_address.*" => "required",
 
         ]); 
 
@@ -87,6 +87,7 @@ class FormCandidateController extends Controller
         ];
 
         // WorkExperience::insert($data);
+        WorkExperience::insert($data);
 
         $certificates = [];
         if($request->file('img_address'))
@@ -105,11 +106,25 @@ class FormCandidateController extends Controller
          $certificateobject ->img_address = $certificates;
          $certificateobject ->id_candidate = $validateData['certificate_id'];
          $certificateobject ->save();
+                // $certificates[] = $name;
+                
+                // $savesertif = new Certificate();
+                // $savesertif->img_address = $name;
+                // $savesertif->id_candidate = $validateData['certificate_id'];
+                // $savesertif->save();
 
-         dd($validateData); 
+            
+         
+  
+        //  $certificate= new Certificate();
+        //  $certificate->img_address = json_encode($certificates);
+        //  $certificate->id_candidate = $validateData['certificate_id'];
+        //  $certificate->save();
+
+        //  dd($validateData); 
         
-        // Candidate::create($validateData); 
-        // return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
+        Candidate::create($validateData); 
+        return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
 
     }
 

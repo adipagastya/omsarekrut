@@ -102,10 +102,12 @@
                     <div class="col-md-6">
                         <label class="form-label">Scan Ijazah</label>
                         <input type="file" class="form-control" name="study_certificate" required>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Scan Transkrip</label>
                         <input type="file" class="form-control" name="transcript" required>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                     </div>
                 </div>
     
@@ -114,39 +116,39 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" required>
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year" required>
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year" value="0" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
+                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description">Deskripsi</textarea>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1" required>
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1" value="Nama Instansi">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year1" required>
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year1" value="0">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description1"></textarea>
+                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description1">Deskripsi</textarea>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
-                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2" required>
+                    <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2" value="Nama Instansi">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tahun</label>
-                    <input type="number" class="form-control" placeholder="Tahun" name="work_year2" required>
+                    <input type="number" class="form-control" placeholder="Tahun" name="work_year2" value="0">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2"></textarea>
+                    <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2">Deskripsi</textarea>
                 </div>
 
                 <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
