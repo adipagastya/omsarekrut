@@ -17,7 +17,7 @@
   <div class="container-fluid">
     <div class="row">
       <!-- left column -->
-      <div class="col-lg-8">
+      <div class="col-lg-4">
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
@@ -33,7 +33,9 @@
             </div>
           </form>
         </div>
+      </div>
         <!-- /.card -->
+      <div class="col-lg-8">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Data Diri</h3>
@@ -78,7 +80,46 @@
           </form>
         </div>
         <!-- /.card -->
-
+      </div>
+      <div class="col-lg-4">
+        <!-- /.card -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Bidang Pekerjaan</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
+            @method('put')
+            @csrf
+            <div class="card-body">
+              <div class="form-group">
+                <label>Wilayah</label>
+                <p>
+                  @foreach ($regions as $region)
+                  {{ $candidate->region_id == $region->id ? $region->name : '' }}@endforeach
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Bidang Pekerjaan</label>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}@endforeach
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tipe</label>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->type : '' }}@endforeach
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+      </div>
+      <div class="col-lg-8">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Pendidikan Terakhir</h3>
@@ -125,30 +166,17 @@
                   <input type="text" class="form-control" value="{{ $candidate->study_certificate }}"> 
                   <span class="input-group-append">
                     <a class="btn btn-info btn-flat" href="{{ route('getimage',$candidate->study_certificate) }}"> Download</a>
-                    {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
+                    <button type="button" class="btn btn-info btn-flat">Download</button>
                   </span>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label>Sertifikat pendukung</label>
-                  @foreach ($certificates as $certificate)
-                  <div class="input-group input-group-sm mt-2">
-                    <input type="text" class="form-control" value="Sertifikat penunjang {{ $loop->iteration }}"> 
-                      <span class="input-group-append">
-                        <a class="btn btn-info btn-flat" href="{{ route('getimage', $certificate->img_address) }}"> Download</a>
-                        {{-- {{route('getfile', 'lr-file.png')}} --}}
-                    {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
-                    </span>
-                  </div>
-                  @endforeach
-              </div> 
-
+              </div> --}}
             </div>
           </form>
         </div>
+      </div>
 
-
+      
+      <div class="col-lg-6">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Scan Ijasah</h3>
@@ -163,6 +191,8 @@
             </div>
           </form>
         </div>
+      </div>
+      <div class="col-lg-6">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Scan Transcript</h3>
@@ -177,10 +207,33 @@
             </div>
           </form>
         </div>
+      </div>
 
+      <div class="col-lg-3">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Sertifikat Pendukung</h3>
+          </div>
+          <div class="card-body"><div class="form-group">
+              @foreach ($certificates as $certificate)
+              <div class="input-group input-group-sm mt-2">
+                <input type="text" class="form-control" value="Sertifikat penunjang {{  $loop->iteration }}"> 
+                  <span class="input-group-append">
+                    <a class="btn btn-info btn-flat" href="{{ route('getimage', $certificate->img_address) }}"> Download</a>
+                    {{-- {{route('getfile', 'lr-file.png')}} --}}
+                {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
+                </span>
+              </div>
+              @endforeach
+          </div>
+          </div>
+        </div>
+      </div>
+
+      @foreach ($workexps as $workexp)
+      @if ($candidate->work_exp_id == $workexp->id_candidate)
+      <div class="col-lg-3">
         <!-- /.card -->
-        @foreach ($workexps as $workexp)
-        @if ($candidate->work_exp_id == $workexp->id_candidate)
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Pengalaman Kerja</h3>
@@ -212,8 +265,13 @@
             </div>
           </form>
         </div>
-        @endif
-        @endforeach
+      </div>
+      @endif
+      @endforeach
+        
+        
+
+        
         <!-- /.card -->
 
         {{-- <div class="card card-primary">
@@ -247,43 +305,7 @@
             </div>
           </form>
         </div> --}}
-        <!-- /.card -->
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Bidang Pekerjaan</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
-            <div class="card-body">
-              <div class="form-group">
-                <label>Wilayah</label>
-                <p>
-                  @foreach ($regions as $region)
-                  {{ $candidate->region_id == $region->id ? $region->name : '' }}@endforeach
-                </p>
-              </div>
-              <div class="form-group">
-                <label>Bidang Pekerjaan</label>
-                <p>
-                  @foreach ($workfields as $workfield)
-                  {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}@endforeach
-                </p>
-              </div>
-              <div class="form-group">
-                <label>Tipe</label>
-                <p>
-                  @foreach ($workfields as $workfield)
-                  {{ $candidate->workfield_id == $workfield->id ? $workfield->type : '' }}@endforeach
-                </p>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- /.card -->
-      </div>
+        
     </div>
     <!--/.col (left) -->
     <!-- /.row -->
