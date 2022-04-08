@@ -122,9 +122,30 @@ class CandidateController extends Controller
      */
     public function destroy(Candidate $candidate, WorkExperience $workexperience)
     {
+        $certificates = Certificate::where('id_candidate', '=', $candidate->certificate_id)->get(); 
+        foreach($certificates as $certif){
+            if(File::exists(public_path('/certificates/'.$certif->img_address))){
+                File::delete(public_path('/certificates/'.$certif->img_address));
+            } 
+        }
+        Certificate::where('id_candidate','=', $candidate->certificate_id)->delete();
         Candidate::destroy($candidate->id);
         WorkExperience::where('id_candidate','=', $candidate->work_exp_id)->delete();
-        Storage::delete([$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
+
+
+        // Storage::delete([$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
+
+        if(File::exists(public_path('/candidate-image/'.$candidate->profile))){
+            File::delete(public_path('/candidate-image/'.$candidate->profile));
+        }
+        
+        if(File::exists(public_path('/candidate-image/'.$candidate->transcript))){
+            File::delete(public_path('/candidate-image/'.$candidate->transcript));
+        }
+        if(File::exists(public_path('/candidate-image/'.$candidate->study_certificate))){
+            File::delete(public_path('/candidate-image/'.$candidate->study_certificate));
+        }
+
         // Storage::delete(public_path().'/candidate-image/'.[$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
         return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
     }
