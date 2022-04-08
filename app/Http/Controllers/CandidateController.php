@@ -127,6 +127,18 @@ class CandidateController extends Controller
         Storage::delete([$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
         // Storage::delete(public_path().'/candidate-image/'.[$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
         return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
+
+        $certificates = Certificate::where('id_candidate', $candidate->);
+        $images = explode(",", $vehicles->images);
+
+        foreach($images as $image){
+
+        $image_path = public_path().'/certificates/'.$image;
+
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        }
     }
 
 
