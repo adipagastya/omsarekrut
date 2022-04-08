@@ -97,31 +97,18 @@ class FormCandidateController extends Controller
             {
                 $name = time().rand(1,100).'.'.$certificate->extension();
                 $certificate->move(public_path('certificates'), $name);    
-                $certificates[] = $name;  
+               
+
+                $certificateobject = new Certificate();
+                $certificateobject ->img_address = $name;
+                $certificateobject ->id_candidate = $validateData['certificate_id'];
+                $certificateobject ->save();
             }
-            // dd($certificates); 
+            
          }
   
-         $certificateobject = new Certificate();
-         $certificateobject ->img_address = $certificates;
-         $certificateobject ->id_candidate = $validateData['certificate_id'];
-         $certificateobject ->save();
-                // $certificates[] = $name;
-                
-                // $savesertif = new Certificate();
-                // $savesertif->img_address = $name;
-                // $savesertif->id_candidate = $validateData['certificate_id'];
-                // $savesertif->save();
-
-            
-         
-  
-        //  $certificate= new Certificate();
-        //  $certificate->img_address = json_encode($certificates);
-        //  $certificate->id_candidate = $validateData['certificate_id'];
-        //  $certificate->save();
-
-        //  dd($validateData); 
+        
+               
         
         Candidate::create($validateData); 
         return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 

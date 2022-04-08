@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Certificate;
 use App\Models\Region;
 use App\Models\WorkExperience;
 use App\Models\WorkField;
@@ -67,7 +68,8 @@ class CandidateController extends Controller
             'workfields' => $workfield::all(),
             'workexps' => $workexp::all(),
             'workCount' => $workfield,
-            'candidate' => $candidate
+            'candidate' => $candidate, 
+            'certificates' => Certificate::where('id_candidate', '=', $candidate->certificate_id)->get()
         ]);
     }
 
@@ -122,5 +124,13 @@ class CandidateController extends Controller
         WorkExperience::where('id_candidate','=', $candidate->work_exp_id)->delete();
         Storage::delete([$candidate->profile,$candidate->transcript,$candidate->study_certificate]);
         return redirect('/dashboard/candidates')->with('success', 'Data berhasil dihapus');
+    }
+
+
+    public function getImage($certificate_address){
+        $path = public_path('/certificates/'.$certificate_address); 
+        $headers = ['Content-Type: image/jpeg '];
+    
+        return  response()->download($path, $certificate_address, $headers);
     }
 }
