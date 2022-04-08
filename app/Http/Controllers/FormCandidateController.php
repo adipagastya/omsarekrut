@@ -86,23 +86,25 @@ class FormCandidateController extends Controller
             ['name'=>$request->work_name2, 'year'=> $request->work_year2, 'description'=> $request->description2, 'id_candidate'=> $validateData['work_exp_id']],
         ];
 
+        // WorkExperience::insert($data);
         WorkExperience::insert($data);
 
         $certificates = [];
         if($request->file('img_address'))
          {
+
             foreach($request->file('img_address') as $certificate)
             {
                 $name = time().rand(1,100).'.'.$certificate->extension();
                 $certificate->move(public_path('certificates'), $name);    
-                // $certificates[] = $name;
-                
-                $savesertif = new Certificate();
-                $savesertif->img_address = $name;
-                $savesertif->id_candidate = $validateData['certificate_id'];
-                $savesertif->save();
+               
 
+                $certificateobject = new Certificate();
+                $certificateobject ->img_address = $name;
+                $certificateobject ->id_candidate = $validateData['certificate_id'];
+                $certificateobject ->save();
             }
+            
          }
 
         
@@ -133,12 +135,8 @@ class FormCandidateController extends Controller
             $saveprofile = "candidate-image" . $image;
         }
   
-        //  $certificate= new Certificate();
-        //  $certificate->img_address = json_encode($certificates);
-        //  $certificate->id_candidate = $validateData['certificate_id'];
-        //  $certificate->save();
-
-        //  dd($validateData); 
+        
+               
         
         Candidate::create($validateData); 
         return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 

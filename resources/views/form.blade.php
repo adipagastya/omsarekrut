@@ -110,7 +110,7 @@
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                     </div>
                 </div>
-          {{-- data ada difile cadangan --}}
+    
 
           <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
 

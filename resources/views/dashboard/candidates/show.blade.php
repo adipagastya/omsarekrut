@@ -124,19 +124,26 @@
                 <div class="input-group input-group-sm">
                   <input type="text" class="form-control" value="{{ $candidate->study_certificate }}"> 
                   <span class="input-group-append">
-                    <button type="button" class="btn btn-info btn-flat"><a href=""></a>Download</button>
+                    <a class="btn btn-info btn-flat" href="{{ route('getimage',$candidate->study_certificate) }}"> Download</a>
+                    {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
                   </span>
                 </div>
               </div>
+
               <div class="form-group">
-                <label>Scan Transcript</label>
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" value="{{ $candidate->transcript  }}"> 
-                    <span class="input-group-append">
-                  <button type="button" class="btn btn-info btn-flat">Download</button>
-                  </span>
-                </div>
-              </div> --}}
+                <label>Sertifikat pendukung</label>
+                  @foreach ($certificates as $certificate)
+                  <div class="input-group input-group-sm mt-2">
+                    <input type="text" class="form-control" value="Sertifikat penunjang {{  }}"> 
+                      <span class="input-group-append">
+                        <a class="btn btn-info btn-flat" href="{{ route('getimage', $certificate->img_address) }}"> Download</a>
+                        {{-- {{route('getfile', 'lr-file.png')}} --}}
+                    {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
+                    </span>
+                  </div>
+                  @endforeach
+              </div> 
+
             </div>
           </form>
         </div>
