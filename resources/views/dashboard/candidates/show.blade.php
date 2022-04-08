@@ -29,7 +29,7 @@
             @method('put')
             @csrf
             <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->profile) }}" alt="Photo">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->profile) }}" alt="Photo">
             </div>
           </form>
         </div>
@@ -159,7 +159,7 @@
             @method('put')
             @csrf
             <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->study_certificate) }}" alt="Photo">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->study_certificate) }}" alt="Photo">
             </div>
           </form>
         </div>
@@ -173,7 +173,7 @@
             @method('put')
             @csrf
             <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('storage/'.$candidate->transcript) }}" alt="Photo">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->transcript) }}" alt="Photo">
             </div>
           </form>
         </div>
