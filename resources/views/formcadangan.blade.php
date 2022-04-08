@@ -52,21 +52,11 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}" required>
-                    @error('name')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">No. Telepon</label>
-                    <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}" required>
-                    @error('phone')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
+                    <input type="number" class="form-control" placeholder="No. Telepon" name="phone" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">E-Mail</label>
@@ -80,21 +70,11 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tempat Lahir</label>
-                        <input type="text" class="form-control @error('place_birth') is-invalid @enderror" placeholder="Tempat Lahir" name="place_birth" value="{{ old('place_birth') }}" required>
-                        @error('place_birth')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="place_birth" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ old('date_birth') }}" required>
-                        @error('date_birth')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="date" class="form-control" name="date_birth" required>
                     </div>
                 </div>
 
@@ -102,62 +82,32 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Universitas / Institut / Sekolah</label>
-                    <input type="text" class="form-control @error('studies') is-invalid @enderror" placeholder="Nama Universitas / Institut / Sekolah" name="studies" value="{{ old('studies') }}" required>
-                    @error('studies')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
+                    <input type="text" class="form-control" placeholder="Nama Universitas / Institut / Sekolah" name="studies" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Jurusan</label>
-                    <input type="text" class="form-control @error('major') is-invalid @enderror" placeholder="Jurusan" name="major" value="{{ old('major') }}" required>
-                    @error('major')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
+                    <input type="text" class="form-control" placeholder="Jurusan" name="major" required>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Tingkat</label>
-                        <input type="text" class="form-control @error('edu_level') is-invalid @enderror" placeholder="Tingkat" name="edu_level" value="{{ old('edu_level') }}" required>
-                        @error('edu_level')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <input type="text" class="form-control" placeholder="Tingkat" name="edu_level" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Tahun</label>
-                        <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}" required>
-                        @error('grad_year')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <input type="text" class="form-control" placeholder="Tahun" name="grad_year" required>
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label">Scan Ijazah</label>
-                        <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate" required>
+                        <input type="file" class="form-control" name="study_certificate" required>
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('study_certificate')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Scan Transkrip</label>
-                        <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript" required>
+                        <input type="file" class="form-control" name="transcript" required>
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('transcript')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
                     </div>
                 </div>
     
@@ -205,29 +155,19 @@
 
                 <div class="mb-3">
                     <div class="input-group hdtuto control-group lst increment" >
-                        <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
+                        <input type="file" name="img_address[]" class="myfrm form-control">
                         <div class="input-group-btn"> 
                           <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
                         </div>
-                        @error('img_address[]')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="clone hide">
-                    <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-                        <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
-                        <div class="input-group-btn"> 
-                        <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                      </div>
+                      <div class="clone hide">
+                        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                          <input type="file" name="img_address[]" class="myfrm form-control">
+                          <div class="input-group-btn"> 
+                            <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                          </div>
                         </div>
-                        @error('img_address[]')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    </div>
+                      </div>
                 </div>
 
                 <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>

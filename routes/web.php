@@ -30,13 +30,6 @@ use App\Models\Candidate;
 |
 */
 
-Route::get('/', function () {
-    return view('form', [
-        'title' => 'Rekruitment',
-        'regions' => Region::all()
-    ]);
-});
-
 Route::resource('/', FormCandidateController::class);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

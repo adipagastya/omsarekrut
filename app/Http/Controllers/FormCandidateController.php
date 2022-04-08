@@ -54,14 +54,14 @@ class FormCandidateController extends Controller
             "major" => "required|max:255",
             "edu_level" => "required|max:255",
             "grad_year" => "required|max:255",
-            "study_certificate" => "required|image|file", 
-            "transcript" => "required|image|file", 
-            "profile" => "required|image|file", 
+            "study_certificate" => "required|image|max:1024", 
+            "transcript" => "required|image|max:1024", 
+            "profile" => "required|image|max:1024", 
             "application_date" => "required", 
             "region_id" => "required",
             "workfield_id" => "required",
-            "img_address" => "required",
-            "img_address.*" => "required",
+            "img_address" => "required|max:1024",
+            "img_address.*" => "required|max:1024",
 
         ]); 
 
