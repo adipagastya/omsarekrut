@@ -3,7 +3,7 @@
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -41,7 +41,7 @@
             <div class="me-4 col-3" id="fotoForm">
                 <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
                 <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" required />
-                <a class="btn btn-primary mt-3" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
+                <a class="btn btn-primary mt-3" type="button" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
             </div>
 
             <div class="col-9" id="idForm">
@@ -207,19 +207,15 @@
                     <div class="input-group hdtuto control-group lst increment" >
                         <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
                         <div class="input-group-btn"> 
-                          <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+                          <button class="btn btn-success btntambah" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
                         </div>
-                        @error('img_address[]')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="clone hide">
-                    <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-                        <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
-                        <div class="input-group-btn"> 
-                        <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                      </div>
+                      <div class="clone hide d-none">
+                        <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                          <input type="file" name="img_address[]" class="myfrm form-control">
+                          <div class="input-group-btn"> 
+                            <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                          </div>
                         </div>
                         @error('img_address[]')
                             <div class="invalid-feedback">
@@ -337,13 +333,33 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            console.log("ini jalan saat gagagl upload");
+           
+            var increment = 0 
         $(".btn-success").click(function(){ 
+            console.log("jalan tambah ");
+            if(increment < 2){
+                increment = increment + 1 
             var lsthmtl = $(".clone").html();
             $(".increment").after(lsthmtl);
-        });
+            } 
+        });  
         $("body").on("click",".btn-danger",function(){ 
+            console.log("remove jalan");
+            increment = increment - 1
             $(this).parents(".hdtuto").remove();
         });
+
+        // $("body").on("click",".btn-success",function(){ 
+        //     if(increment < 2){
+        //         increment = increment + 1 
+        //     var lsthmtl = $(".clone").html();
+        //     $(".increment").after(lsthmtl);
+        //     } 
+        // });
+
+        
+
         });
     </script>
     
