@@ -30,12 +30,6 @@ use App\Models\Candidate;
 |
 */
 
-Route::get('/', function () {
-    return view('form', [
-        'title' => 'Rekruitment',
-        'regions' => Region::all()
-    ]);
-});
 
 Route::resource('/', FormCandidateController::class);
 
