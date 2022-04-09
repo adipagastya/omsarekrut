@@ -40,8 +40,13 @@
             <div class="d-flex" id="flexContainer">
                 <div class="me-4 col-3" id="fotoForm">
                     <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
-                    <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" required />
+                    <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" class="@error('profile') is-invalid @enderror">
                     <a class="btn btn-primary mt-3" type="button" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
+                    @error('profile')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="col-9" id="idForm">
@@ -52,7 +57,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}" required>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
                         @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -61,7 +66,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">No. Telepon</label>
-                        <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}" required>
+                        <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}">
                         @error('phone')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -70,7 +75,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}" required>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}">
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -80,7 +85,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control @error('place_birth') is-invalid @enderror" placeholder="Tempat Lahir" name="place_birth" value="{{ old('place_birth') }}" required>
+                            <input type="text" class="form-control @error('place_birth') is-invalid @enderror" placeholder="Tempat Lahir" name="place_birth" value="{{ old('place_birth') }}">
                             @error('place_birth')
                                 <div class="invalid-feedback">
                                 {{ $message }}
@@ -89,7 +94,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ old('date_birth') }}" required>
+                            <input type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ old('date_birth') }}">
                             @error('date_birth')
                                 <div class="invalid-feedback">
                                 {{ $message }}
@@ -102,7 +107,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Universitas / Institut / Sekolah</label>
-                        <input type="text" class="form-control @error('studies') is-invalid @enderror" placeholder="Nama Universitas / Institut / Sekolah" name="studies" value="{{ old('studies') }}" required>
+                        <input type="text" class="form-control @error('studies') is-invalid @enderror" placeholder="Nama Universitas / Institut / Sekolah" name="studies" value="{{ old('studies') }}">
                         @error('studies')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -111,7 +116,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jurusan</label>
-                        <input type="text" class="form-control @error('major') is-invalid @enderror" placeholder="Jurusan" name="major" value="{{ old('major') }}" required>
+                        <input type="text" class="form-control @error('major') is-invalid @enderror" placeholder="Jurusan" name="major" value="{{ old('major') }}">
                         @error('major')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -121,7 +126,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tingkat</label>
-                            <input type="text" class="form-control @error('edu_level') is-invalid @enderror" placeholder="Tingkat" name="edu_level" value="{{ old('edu_level') }}" required>
+                            <input type="text" class="form-control @error('edu_level') is-invalid @enderror" placeholder="Tingkat" name="edu_level" value="{{ old('edu_level') }}">
                             @error('edu_level')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -130,7 +135,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tahun</label>
-                            <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}" required>
+                            <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}">
                             @error('grad_year')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -141,7 +146,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Scan Ijazah</label>
-                            <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate" required>
+                            <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
                             <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                             @error('study_certificate')
                             <div class="invalid-feedback">
@@ -151,7 +156,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Scan Transkrip</label>
-                            <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript" required>
+                            <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript">
                             <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                             @error('transcript')
                             <div class="invalid-feedback">
@@ -234,20 +239,30 @@
                     
                     <div class="mb-3">
                         <label class="form-label">Nama Wilayah</label>
-                        <select class="form-select" name="region_id" id="wilayah" required>
+                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" required>
                             <option selected>Pilih Wilayah</option>
                             <option disabled value="">------------------</option>
                             @foreach ($regions as $region)
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
                             @endforeach
-                        </select>   
+                        </select>
+                        @error('region_id')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                        @enderror   
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Posisi</label>
-                        <select class="form-select" name="workfield_id" id="posisi" required>
-                            <option value="">Pilih Posisi</option>
+                        <select class="form-select @error('workfield_id') is-invalid @enderror" name="workfield_id" id="posisi">
+                            <option>Pilih Posisi</option>
                             <option disabled value="">------------------</option>
                         </select>
+                        @error('workfield_id')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <button class="w-20 btn btn-success" type="submit" id="btSubmit" onclick="return confirm('Pastikan semua data sudah benar!, kirim lamaran?')">Kirim Lamaran</button>
                 </div>
