@@ -17,6 +17,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>OMSA Medic | {{ $title }}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favico/favicon-16x16.png">
+    <link rel="manifest" href="/img/favico/site.webmanifest"> 
 </head>
 
 <body>
@@ -220,6 +225,7 @@
                                 </div>
                             @enderror
                         </div>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                         <div class="clone hide d-none">
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
@@ -264,7 +270,25 @@
                             </div>
                         @enderror
                     </div>
-                    <button class="w-20 btn btn-success" type="submit" id="btSubmit" onclick="return confirm('Pastikan semua data sudah benar!, kirim lamaran?')">Kirim Lamaran</button>
+                    <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal")">Kirim Lamaran</button>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kirim Lamaran Anda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Pastikan semua data sudah benar! kirim lamaran?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Kirim</button>
+                    </div>
+                </div>
                 </div>
             </div>
         </form>
@@ -382,10 +406,9 @@
         });
     </script>
     
-    <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/config.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     </body>
     
     </html>

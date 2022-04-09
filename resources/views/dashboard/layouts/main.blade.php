@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OMSA Medic | {{ $title }}</title>
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favico/favicon-16x16.png">
+  <link rel="manifest" href="/img/favico/site.webmanifest"> 
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
