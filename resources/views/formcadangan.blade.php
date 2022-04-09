@@ -112,7 +112,7 @@
                 </div>
     
 
-          <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
+                <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
 
                 <div class="mb-3">
                     <label class="form-label">Nama Instansi</label>
