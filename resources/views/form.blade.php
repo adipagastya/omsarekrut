@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
 
     {{-- Bootstrap Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{-- My Style --}}
     <link rel="stylesheet" href="/css/formstyle.css">
@@ -35,9 +38,15 @@
         <h3 class="mb-5 mt-5 text-center"><b>{{ $title }}</b> - OMSA MEDIC</h3>
 
         @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            </div>
+        <script>
+            Swal.fire({
+                title: 'Daftar Berhasil',
+                text: '{{ session("success")  }}',
+                icon: 'success',
+                showConfirmButton: false, 
+                showCloseButton:true
+            })
+        </script>
         @endif
         
         <form action="/" method="post" enctype="multipart/form-data">
@@ -188,7 +197,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name1" value="Nama Instansi">
+                        <input type="text" class=" form-control" placeholder="Nama Instansi" name="work_name1" value="Nama Instansi">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tahun</label>
@@ -217,7 +226,7 @@
                         <div class="input-group hdtuto control-group lst increment" >
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
                             <div class="input-group-btn"> 
-                            <button class="btn btn-success btntambah" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+                            <button class="btn btn-success btn-add-sertif" type="button"><i class="fldemo glyphicon glyphicon-plus" onclick="showModal()"></i>Add</button>
                             </div>
                             @error('img_address[]')
                                 <div class="invalid-feedback">
@@ -230,7 +239,7 @@
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
                             <div class="input-group-btn"> 
-                                <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                                <button class="btn btn-danger btn-remove-sertif" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
                             @error('img_address[]')
                                 <div class="invalid-feedback">
@@ -320,6 +329,7 @@
             </ul>
         </footer>
     </div>
+
     <script src=" js/bootstrap.bundle.min.js">
     </script>
     <script src="js/dashboard.js"></script>
@@ -340,6 +350,9 @@
                 preview.style.display = "block";
             }
         }
+
+        
+
     </script>
     
     <script>
@@ -368,42 +381,27 @@
                     }); 
                 }
             })
-        })
 
-            
 
-    </script>
+            // ============== tambah dan hapus input sertifikat ==============
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            console.log("ini jalan saat gagagl upload");
-           
-            var increment = 0 
-        $(".btn-success").click(function(){ 
-            console.log("jalan tambah ");
-            if(increment < 2){
-                increment = increment + 1 
-            var lsthmtl = $(".clone").html();
-            $(".increment").after(lsthmtl);
-            } 
-        });  
-        $("body").on("click",".btn-danger",function(){ 
-            console.log("remove jalan");
-            increment = increment - 1
-            $(this).parents(".hdtuto").remove();
-        });
+         
+                var increment = 0 
+                $(".btn-add-sertif").click(function(){ 
+                     if(increment < 2){
+                        increment = increment + 1 
+                        var lsthmtl = $(".clone").html();
+                        $(".increment").after(lsthmtl);
+                     } 
+                });  
 
-        // $("body").on("click",".btn-success",function(){ 
-        //     if(increment < 2){
-        //         increment = increment + 1 
-        //     var lsthmtl = $(".clone").html();
-        //     $(".increment").after(lsthmtl);
-        //     } 
-        // });
+                $("body").on("click",".btn-remove-sertif",function(){ 
+                    increment = increment - 1
+                    $(this).parents(".hdtuto").remove();
+                });
+        // ============== akhir tambah dan hapus input sertifikat ==============
 
-        
-
-        });
+            })
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
