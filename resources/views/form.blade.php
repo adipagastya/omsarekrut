@@ -40,7 +40,7 @@
         @if (session()->has('success'))
         <script>
             Swal.fire({
-                title: 'Daftar Berhasil',
+                title: 'LAMARAN TERKIRIM',
                 text: '{{ session("success")  }}',
                 icon: 'success',
                 showConfirmButton: false, 

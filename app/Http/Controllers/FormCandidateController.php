@@ -60,8 +60,8 @@ class FormCandidateController extends Controller
             "application_date" => "required", 
             "region_id" => "required",
             "workfield_id" => "required",
-            "img_address" => "required|image|max:1024",
-            "img_address.*" => "required|image|max:1024",
+            "img_address" => "max:1024",
+            "img_address.*" => "max:1024",
 
         ]); 
 
@@ -123,7 +123,7 @@ class FormCandidateController extends Controller
                
         
         Candidate::create($validateData); 
-        return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!, lamaran anda akan kami review terlebih dahulu. Jika sudah memenuhi kriteria kami akan segera munghubungi anda :)'); 
+        return redirect('/')->with('success', 'Terimakasih telah melamar di OMSA Medic!'); 
 
     }
 
