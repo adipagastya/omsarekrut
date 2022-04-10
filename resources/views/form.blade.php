@@ -13,6 +13,8 @@
     {{-- Bootstrap Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     {{-- My Style --}}
     <link rel="stylesheet" href="/css/formstyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -31,9 +33,15 @@
         <h3 class="mb-5 mt-5 text-center"><b>{{ $title }}</b> - OMSA MEDIC</h3>
 
         @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            </div>
+        <script>
+            Swal.fire({
+                title: 'Daftar Berhasil',
+                text: '{{ session("success")  }}',
+                icon: 'success',
+                showConfirmButton: false, 
+                showCloseButton:true
+            })
+        </script>
         @endif
         
         <form action="/" method="post" enctype="multipart/form-data">
@@ -208,7 +216,7 @@
                         <div class="input-group hdtuto control-group lst increment" >
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
                             <div class="input-group-btn"> 
-                            <button class="btn btn-success btn-add-sertif" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+                            <button class="btn btn-success btn-add-sertif" type="button"><i class="fldemo glyphicon glyphicon-plus" onclick="showModal()"></i>Add</button>
                             </div>
                             @error('img_address[]')
                                 <div class="invalid-feedback">
@@ -282,64 +290,6 @@
             </ul>
         </footer>
     </div>
-{{-- ====================== start modal ==========================  --}}
-
-<!--Model Popup starts-->
-        <div class="container">
-            <div class="row">
-                <a class="btn btn-primary" data-toggle="modal" href="#ignismyModal">open Popup</a>
-                <div class="modal fade" id="ignismyModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
-                     </div>
-					
-                        <div class="modal-body">
-                       
-						<div class="thank-you-pop">
-							<img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
-							<h1>Thank You!</h1>
-							<p>Your submission is received and we will contact you soon</p>
-							<h3 class="cupon-pop">Your Id: <span>12345</span></h3>
-							
- 						</div>
-                         
-                    </div>
-					
-                </div>
-            </div>
-            </div>
-            </div>
-        </div>
-<!--Model Popup ends-->
-
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
     <script src=" js/bootstrap.bundle.min.js">
     </script>
@@ -361,6 +311,9 @@
                 preview.style.display = "block";
             }
         }
+
+        
+
     </script>
     
     <script>
@@ -414,7 +367,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-   
     </body>
     
     </html>
