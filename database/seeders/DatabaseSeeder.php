@@ -38,30 +38,30 @@ class DatabaseSeeder extends Seeder
             'name' => 'Yogyakarta'
         ]);
 
-        WorkField::create([
-            'name' => 'Admin',
-            'type' => 'Non Medical',
-            'region_id' => 1
-        ]);
+        // WorkField::create([
+        //     'name' => 'Admin',
+        //     'type' => 'Non Medical',
+        //     'region_id' => 1
+        // ]);
 
-        Candidate::create([
-            'name' => 'Putu Adipa',
-            'email' => 'adi@mail.com',
-            'phone' => '089473687366',
-            'place_birth' => 'Bali',
-            'date_birth' => '1997/08/28',
-            'studies' => 'ITB STIKOM Bali',
-            'major' => 'Sistem Informasi',
-            'edu_level' => 'Sarjana 1',
-            'grad_year' => '2019',
-            'study_certificate' => 'certif.jpg',
-            'transcript' => 'transcript.jpg',
-            'profile' => 'photo.jpg',
-            'application_date' => date("Y/m/d"),
-            'region_id' => 1,
-            'workfield_id' => 1,
-            'certificate_id' => 13344,
-            'work_exp_id' => 12344
-        ]);
+        // Candidate::create([
+        //     'name' => 'Putu Adipa',
+        //     'email' => 'adi@mail.com',
+        //     'phone' => '089473687366',
+        //     'place_birth' => 'Bali',
+        //     'date_birth' => '1997/08/28',
+        //     'studies' => 'ITB STIKOM Bali',
+        //     'major' => 'Sistem Informasi',
+        //     'edu_level' => 'Sarjana 1',
+        //     'grad_year' => '2019',
+        //     'study_certificate' => 'certif.jpg',
+        //     'transcript' => 'transcript.jpg',
+        //     'profile' => 'photo.jpg',
+        //     'application_date' => date("Y/m/d"),
+        //     'region_id' => 1,
+        //     'workfield_id' => 1,
+        //     'certificate_id' => 13344,
+        //     'work_exp_id' => 12344
+        // ]);
     }
 }

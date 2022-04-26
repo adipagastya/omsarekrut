@@ -7,6 +7,7 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\WorkExperience;
+use App\Models\WorkField;
 
 class FormCandidateController extends Controller
 {
@@ -42,20 +43,30 @@ class FormCandidateController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request); 
+        // dd($request->toArray()); 
         $validateData = $request->validate([
            
             "name" => "required|max:255",
             "phone" => "required|max:13", 
             "email" => "required|email|unique:users",
+            "address" => "required|max:255", 
+            "residence_address" => "required|max:255", 
             "place_birth" => "required|max:255", 
             "date_birth" => "required|max:255", 
+            "family_name" => "required|max:255", 
+            "family_status " => "required|max:255", 
+            "family_phone" => "required|max:255", 
             "studies"=> "required|max:255",
             "major" => "required|max:255",
             "edu_level" => "required|max:255",
             "grad_year" => "required|max:255",
             "study_certificate" => "required|image|max:1024", 
-            "transcript" => "required|image|max:1024", 
+            "transcript" => "required|image|max:1024",
+            "str_certificate" => "image|max:1024",
+            "personal_id_card" => "required|image|max:1024",
+            "family_id_card" => "required|image|max:1024",
+            "skck" => "image|max:1024",
+            "health_information" => "image|max:1024",
             "profile" => "required|image|max:1024", 
             "application_date" => "required", 
             "region_id" => "required",
@@ -69,9 +80,30 @@ class FormCandidateController extends Controller
         $validateData['work_exp_id'] = $this->generateUniqueCode();
 
         $data = [
-            ['name'=>$request->work_name, 'year'=> $request->work_year, 'description'=> $request->description, 'id_candidate'=> $validateData['work_exp_id']],
-            ['name'=>$request->work_name1, 'year'=> $request->work_year1, 'description'=> $request->description1, 'id_candidate'=> $validateData['work_exp_id']],
-            ['name'=>$request->work_name2, 'year'=> $request->work_year2, 'description'=> $request->description2, 'id_candidate'=> $validateData['work_exp_id']],
+            [
+                'name'=>$request->work_name,
+                'position'=>$request->position, 
+                'start_year'=>$request->start_year,
+                'send_year'=>$request->end_year,
+                'description'=> $request->description,
+                'lead_name'=> $request->lead_name,
+                'lead_phone_number'=> $request->lead_phone_number,
+                'id_candidate'=> $validateData['work_exp_id']
+            ],
+            [
+                'name'=>$request->work_namei,
+                'position'=>$request->positioni, 
+                'start_year'=>$request->start_yeari,
+                'send_year'=>$request->end_yeari,
+                'description'=> $request->descriptioni,
+                'lead_name'=> $request->lead_namei,
+                'lead_phone_number'=> $request->lead_phone_numberi,
+                'id_candidate'=> $validateData['work_exp_id']
+            ],
+
+
+        
+            
         ];
 
         // WorkExperience::insert($data);
@@ -116,6 +148,38 @@ class FormCandidateController extends Controller
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['transcript'] = $name; 
+           
+        }
+
+        if($request->hasFile('personal_id_card')){
+            $image = $request->file('transcript');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['personal_id_card'] = $name; 
+           
+        }
+  
+        if($request->hasFile('family_id_card')){
+            $image = $request->file('transcript');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['family_id_card'] = $name; 
+           
+        }
+
+        if($request->hasFile('skck')){
+            $image = $request->file('transcript');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['skck'] = $name; 
+           
+        }
+
+        if($request->hasFile('health_information')){
+            $image = $request->file('transcript');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['health_information'] = $name; 
            
         }
   

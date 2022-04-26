@@ -23,7 +23,7 @@ class CreateCandidatesTable extends Migration
             $table->string('place_birth');
             $table->string('date_birth');
             $table->string('family_name');
-            $table->string('family_status ');
+            $table->string('family_status');
             $table->string('family_phone');
             $table->string('studies');
             $table->string('major');
@@ -31,7 +31,7 @@ class CreateCandidatesTable extends Migration
             $table->string('grad_year');
             $table->string('study_certificate');
             $table->string('transcript');
-            $table->string('str_certificate')->nullable();
+            $table->string('str_certificate');
             $table->string('personal_id_card');
             $table->string('family_id_card');
             $table->string('skck');

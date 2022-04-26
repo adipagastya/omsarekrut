@@ -52,16 +52,55 @@
         <form action="/" method="post" enctype="multipart/form-data">
             @csrf
             <div class="d-flex" id="flexContainer">
+
                 <div class="me-4 col-3" id="fotoForm">
-                    <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
-                    <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" class="@error('profile') is-invalid @enderror">
-                    <a class="btn btn-primary mt-3" type="button" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
-                    @error('profile')
-                        <div class="invalid-feedback">
+                    <div class="col-12">
+                        <img id="file-ip-1-preview" src="img/default.jpg" alt="" style="max-width: 100%; height: auto;">
+                        <input type="file" id="pp" name="profile" style="display:none;" onchange="showPreview(event);" class="@error('profile') is-invalid @enderror">
+                        <a class="btn btn-primary mt-3" type="button" style="width: 100%;" id="button" name="button" value="Upload" onclick="thisFileUpload();">Upload Foto</a>
+                        @error('profile')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="col-12 mt-5">
+
+                       
+                    <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Nama Wilayah</label>
+                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" required>
+                            <option selected>Pilih Wilayah</option>
+                            <option disabled value="">------------------</option>
+                            @foreach ($regions as $region)
+                                <option value="{{ $region->id }}">{{ $region->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('region_id')
+                            <div class="invalid-feedback">
                             {{ $message }}
-                        </div>
-                    @enderror
+                            </div>
+                        @enderror   
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama Posisi</label>
+                        <select class="form-select @error('workfield_id') is-invalid @enderror" name="workfield_id" id="posisi">
+                            <option>Pilih Posisi</option>
+                            <option disabled value="">------------------</option>
+                        </select>
+                        @error('workfield_id')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    </div>
+
                 </div>
+               
 
                 <div class="col-9" id="idForm">
 
@@ -114,7 +153,102 @@
                                 {{ $message }}
                                 </div>
                             @enderror
+                        </div>                        
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Foto Ktp</label>
+                        <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                        @error('personal_id_card')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Foto KK</label>
+                        <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                        @error('family_id_card')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Scan SKCK</label>
+                        <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                        @error('skck')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Surat Keterangan Sehat</label>
+                        <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                        @error('health_information')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                   
+
+                    <div class="mb-3">
+                        <label class="form-label">Alamat Sesuai KTP</label>
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Alamat Sesuai KTP" name="address" value="{{ old('address') }}">
+                        @error('address')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alamat Domisili</label>
+                        <input type="text" class="form-control @error('residence_address') is-invalid @enderror" placeholder="Alamat Domisili" name="residence_address" value="{{ old('residence_address') }}">
+                        @error('residence_address')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama</label>
+                        <input type="text" class="form-control @error('family_name') is-invalid @enderror" placeholder="Nama" name="family_name" value="{{ old('family_name') }}">
+                      
+                        @error('family_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Hubungan</label>
+                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status ') }}">
+                        <span class="badge bg-secondary mt-2">contohnya ayah, ibu, wali , dll</span>
+                        @error('family_status ')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">No telp</label>
+                        <input type="text" class="form-control @error('family_phone') is-invalid @enderror" placeholder="No telp" name="family_phone" value="{{ old('ffamily_phone') }}">
+                        @error('family_phone')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3"><b>PENDIDIKAN TERAKHIR</b></div>
@@ -140,13 +274,20 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tingkat</label>
-                            <input type="text" class="form-control @error('edu_level') is-invalid @enderror" placeholder="Tingkat" name="edu_level" value="{{ old('edu_level') }}">
+                            <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level" required>
+                                <option selected>Pilih Pendidikan Terakhir</option>
+                                <option value="SMA/K">SMA/K</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Sarjana">Sarjana</option>
+                                
+                            </select>
                             @error('edu_level')
-                            <div class="invalid-feedback">
+                                <div class="invalid-feedback">
                                 {{ $message }}
-                            </div>
-                            @enderror
+                                </div>
+                            @enderror   
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label">Tahun</label>
                             <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}">
@@ -179,6 +320,16 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="mb-3" id="checkdisplay">
+                        <label class="form-label">Sertifikat STR</label>
+                        <input type="file" class="form-control @error('str_certificate') is-invalid @enderror" name="str_certificate">
+                        <span class="badge bg-secondary mt-2">* wajib diisi untuk pelamar medis </span>
+                        @error('str_certificate')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
         
 
                     <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
@@ -188,36 +339,60 @@
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Tahun</label>
-                        <input type="number" class="form-control" placeholder="Tahun" name="work_year" value="0" required>
+                        <label class="form-label">Nama Pimpinan</label>
+                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="Nama Pimpinan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">telp Pimpinan</label>
+                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_number" value="telp pimpinan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Posisi</label>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="posisi terakhir" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Mulai</label>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" value="{{ date('Y-m-d') }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Resign</label>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" value="{{ date('Y-m-d') }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description">Deskripsi</textarea>
                     </div>
+
+
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class=" form-control" placeholder="Nama Instansi" name="work_name1" value="Nama Instansi">
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="Nama Instansi" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Tahun</label>
-                        <input type="number" class="form-control" placeholder="Tahun" name="work_year1" value="0">
+                        <label class="form-label">Nama Pimpinan</label>
+                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="Nama Pimpinan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">telp Pimpinan</label>
+                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_numberi" value="telp pimpinan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Posisi</label>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="posisi terakhir" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Mulai</label>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" value="{{ date('Y-m-d') }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Resign</label>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" value="{{ date('Y-m-d') }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description1">Deskripsi</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name2" value="Nama Instansi">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tahun</label>
-                        <input type="number" class="form-control" placeholder="Tahun" name="work_year2" value="0">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description2">Deskripsi</textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni">Deskripsi</textarea>
                     </div>
 
                     <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
@@ -250,35 +425,6 @@
                         </div>
                     </div>
 
-                    <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Nama Wilayah</label>
-                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" required>
-                            <option selected>Pilih Wilayah</option>
-                            <option disabled value="">------------------</option>
-                            @foreach ($regions as $region)
-                                <option value="{{ $region->id }}">{{ $region->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('region_id')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror   
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Posisi</label>
-                        <select class="form-select @error('workfield_id') is-invalid @enderror" name="workfield_id" id="posisi">
-                            <option>Pilih Posisi</option>
-                            <option disabled value="">------------------</option>
-                        </select>
-                        @error('workfield_id')
-                            <div class="invalid-feedback">
-                            {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
                     <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal")">Kirim Lamaran</button>
                 </div>
             </div>
@@ -358,7 +504,9 @@
     <script>
 
         $(document).ready(function(){
+
             $('#wilayah').on('change',function(){
+
                 var regionsId = $(this).val(); 
                 if(regionsId){
                     $.ajax({
@@ -367,6 +515,7 @@
                         data:{"_token":"{{ csrf_token() }}"}, 
                         dataType:"json", 
                         success:function(data){ 
+
                             if(data.length > 0){
                                 $('#posisi').empty();
                                 $('#posisi').append('<option hidden>Pilih Posisi</option>'); 
@@ -377,10 +526,15 @@
                                 $('#posisi').empty();
                                 $('#posisi').append('<option>Tidak ada lowongan </option>'); 
                             }
+
                         }
                     }); 
                 }
+
             })
+
+
+
 
 
             // ============== tambah dan hapus input sertifikat ==============
