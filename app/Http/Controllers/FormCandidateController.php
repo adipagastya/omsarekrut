@@ -54,7 +54,7 @@ class FormCandidateController extends Controller
             "place_birth" => "required|max:255", 
             "date_birth" => "required|max:255", 
             "family_name" => "required|max:255", 
-            "family_status " => "required|max:255", 
+            "family_status" => "required|max:255", 
             "family_phone" => "required|max:255", 
             "studies"=> "required|max:255",
             "major" => "required|max:255",
@@ -76,37 +76,46 @@ class FormCandidateController extends Controller
 
         ]); 
 
+        // dd($validateData); 
+
         $validateData['certificate_id'] = $this->generateUniqueCode();
         $validateData['work_exp_id'] = $this->generateUniqueCode();
 
         $data = [
             [
-                'name'=>$request->work_name,
+                'work_name'=>$request->work_name,
                 'position'=>$request->position, 
                 'start_year'=>$request->start_year,
-                'send_year'=>$request->end_year,
+                'end_year'=>$request->end_year,
                 'description'=> $request->description,
                 'lead_name'=> $request->lead_name,
                 'lead_phone_number'=> $request->lead_phone_number,
-                'id_candidate'=> $validateData['work_exp_id']
-            ],
+                'id_candidate'=> $validateData['work_exp_id'], 
+            ], 
             [
-                'name'=>$request->work_namei,
+                'work_name'=>$request->work_namei,
                 'position'=>$request->positioni, 
                 'start_year'=>$request->start_yeari,
-                'send_year'=>$request->end_yeari,
+                'end_year'=>$request->end_yeari,
                 'description'=> $request->descriptioni,
                 'lead_name'=> $request->lead_namei,
                 'lead_phone_number'=> $request->lead_phone_numberi,
-                'id_candidate'=> $validateData['work_exp_id']
-            ],
-
-
-        
-            
+                'id_candidate'=> $validateData['work_exp_id'],
+       
+            ], 
+            [
+                'work_name'=>$request->work_nameii,
+                'position'=>$request->positionii, 
+                'start_year'=>$request->start_yearii,
+                'end_year'=>$request->end_yearii,
+                'description'=> $request->descriptionii,
+                'lead_name'=> $request->lead_nameii,
+                'lead_phone_number'=> $request->lead_phone_numberii,
+                'id_candidate'=> $validateData['work_exp_id'],
+       
+            ] 
         ];
 
-        // WorkExperience::insert($data);
         WorkExperience::insert($data);
 
         $certificates = [];
@@ -152,7 +161,7 @@ class FormCandidateController extends Controller
         }
 
         if($request->hasFile('personal_id_card')){
-            $image = $request->file('transcript');
+            $image = $request->file('personal_id_card');
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['personal_id_card'] = $name; 
@@ -160,7 +169,7 @@ class FormCandidateController extends Controller
         }
   
         if($request->hasFile('family_id_card')){
-            $image = $request->file('transcript');
+            $image = $request->file('family_id_card');
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['family_id_card'] = $name; 
@@ -168,7 +177,7 @@ class FormCandidateController extends Controller
         }
 
         if($request->hasFile('skck')){
-            $image = $request->file('transcript');
+            $image = $request->file('skck');
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['skck'] = $name; 
@@ -176,7 +185,7 @@ class FormCandidateController extends Controller
         }
 
         if($request->hasFile('health_information')){
-            $image = $request->file('transcript');
+            $image = $request->file('health_information');
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['health_information'] = $name; 

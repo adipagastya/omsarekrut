@@ -15,14 +15,14 @@ class CreateWorkExperiencesTable extends Migration
     {
         Schema::create('work_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('position');
-            $table->string('start_year');
-            $table->string('end_year');
-            $table->text('description');
-            $table->string('lead_name');
-            $table->string('lead_phone_number');
-            $table->foreignId('id_candidate');
+            $table->string('work_name')->nullable();
+            $table->string('position')->nullable();
+            $table->string('start_year')->nullable();
+            $table->string('end_year')->nullable();
+            $table->text('description')->nullable();
+            $table->string('lead_name')->nullable();
+            $table->string('lead_phone_number')->nullable();
+            $table->foreignId('id_candidate')->nullable();
             $table->timestamps();
         });
     }
