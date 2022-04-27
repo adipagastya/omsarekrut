@@ -289,6 +289,7 @@
 
       @foreach ($workexps as $workexp)
       @if ($candidate->work_exp_id == $workexp->id_candidate)
+      @if ($workexp->work_name != null)
       <div class="col-lg-3">
         <!-- /.card -->
         <div class="card card-primary">
@@ -300,13 +301,33 @@
               <div class="form-group">
                 <label>Nama Instansi</label>
                 <p>
-                  {{ $workexp->name }}
+                  {{ $workexp->work_name }}
                 </p>
               </div>
               <div class="form-group">
-                <label>Tahun</label>
+                <label>Jabatan</label>
                 <p>
-                  {{ $workexp->year }}
+                  {{ $workexp->position }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Mulai</label>
+                <p>
+                  {{ $workexp->start_year }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Berhenti</label>
+                <p>
+                  {{ $workexp->end_year }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Lama Kerja</label>
+                <p> <?php
+                $age = date_diff(date_create($workexp->end_year), date_create($workexp->start_year));
+                  echo $age->format("%y tahun %m bulan"); 
+                ?>
                 </p>
               </div>
               <div class="form-group">
@@ -318,6 +339,7 @@
             </div>
         </div>
       </div>
+      @endif
       @endif
       @endforeach
         
