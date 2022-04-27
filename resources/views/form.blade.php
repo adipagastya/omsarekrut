@@ -371,7 +371,7 @@
                         <label class="form-label">Deskripsi</label>
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
                     </div>
-
+                    <hr>
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei">
@@ -404,7 +404,7 @@
                         <label class="form-label">Deskripsi</label>
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni"></textarea>
                     </div>
-
+                    <hr>
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_nameii">
