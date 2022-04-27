@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Foto Ktp</label>
+                        <label class="form-label">Foto KTP</label>
                         <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                         @error('personal_id_card')
@@ -234,7 +234,7 @@
                     <div class="mb-3">
                         <label class="form-label">Hubungan</label>
                         <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status ') }}">
-                        <span class="badge bg-secondary mt-2">contohnya ayah, ibu, wali , dll</span>
+                        <span class="badge bg-secondary mt-2">*Contoh: Ayah, Ibu, Wali , dll</span>
                         @error('family_status ')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -273,7 +273,7 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Tingkat</label>
+                            <label class="form-label">Pendidikan Terakhir</label>
                             <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level" required>
                                 <option selected>Pilih Pendidikan Terakhir</option>
                                 <option value="SMA/K">SMA/K</option>
@@ -323,7 +323,7 @@
                     <div class="mb-3" id="checkdisplay">
                         <label class="form-label">Sertifikat STR</label>
                         <input type="file" class="form-control @error('str_certificate') is-invalid @enderror" name="str_certificate">
-                        <span class="badge bg-secondary mt-2">* wajib diisi untuk pelamar medis </span>
+                        <span class="badge bg-danger mt-2">*Wajib untuk pelamar medis </span>
                         @error('str_certificate')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -343,21 +343,21 @@
                         <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="Nama Pimpinan" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">telp Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_number" value="telp pimpinan" required>
+                        <label class="form-label">No. Kontak Pimpinan</label>
+                        <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_number" value="No. Kontak Pimpinan" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Posisi</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="posisi terakhir" required>
+                        <label class="form-label">Posisi Terakhir</label>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="Posisi Terakhir" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
@@ -374,21 +374,21 @@
                         <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="Nama Pimpinan" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">telp Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_numberi" value="telp pimpinan" required>
+                        <label class="form-label">No. Kontak Pimpinan</label>
+                        <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberi" value="No. Kontak Pimpinan" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Posisi</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="posisi terakhir" required>
+                        <label class="form-label">Posisi Terakhir</label>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="Posisi Terakhir" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
