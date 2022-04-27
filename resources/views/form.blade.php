@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!-- required meta tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -71,7 +71,7 @@
                     
                     <div class="mb-3">
                         <label class="form-label">Nama Wilayah</label>
-                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" required>
+                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" >
                             <option selected>Pilih Wilayah</option>
                             <option disabled value="">------------------</option>
                             @foreach ($regions as $region)
@@ -274,7 +274,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tingkat</label>
-                            <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level" required>
+                            <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level" >
                                 <option selected>Pilih Pendidikan Terakhir</option>
                                 <option value="SMA/K">SMA/K</option>
                                 <option value="Diploma">Diploma</option>
@@ -336,28 +336,28 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="name" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Pimpinan</label>
-                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="Nama Pimpinan" required>
+                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="Nama Pimpinan" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">telp Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_number" value="telp pimpinan" required>
+                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_number" value="telp pimpinan" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="posisi terakhir" required>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="posisi terakhir" >
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" value="{{ date('Y-m-d') }}" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" value="{{ date('Y-m-d') }}" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
@@ -367,28 +367,28 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="namei" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="Nama Instansi" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Pimpinan</label>
-                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="Nama Pimpinan" required>
+                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="Nama Pimpinan" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">telp Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_numberi" value="telp pimpinan" required>
+                        <input type="number" class="form-control" placeholder="No telp Pimpinan " name="lead_phone_numberi" value="telp pimpinan" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="posisi terakhir" required>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="posisi terakhir" >
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" value="{{ date('Y-m-d') }}" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" value="{{ date('Y-m-d') }}" >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
@@ -428,6 +428,7 @@
                     <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal")">Kirim Lamaran</button>
                 </div>
             </div>
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -446,6 +447,7 @@
                 </div>
                 </div>
             </div>
+
         </form>
 
 

@@ -31,11 +31,11 @@ class CreateCandidatesTable extends Migration
             $table->string('grad_year');
             $table->string('study_certificate');
             $table->string('transcript');
-            $table->string('str_certificate');
+            $table->string('str_certificate')->nullable();
             $table->string('personal_id_card');
             $table->string('family_id_card');
-            $table->string('skck');
-            $table->string('health_information');
+            $table->string('skck')->nullable();
+            $table->string('health_information')->nullable();
             $table->string('profile');
             $table->enum('status', ['Belum Diproses', 'Screening', 'Interview', 'Interview Lanjuatan', 'Diterima', 'Ditolak'])->default('Belum Diproses');
             $table->string('application_date');

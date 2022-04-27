@@ -83,7 +83,7 @@ class FormCandidateController extends Controller
 
         $data = [
             [
-                'name'=>$request->name,
+                'work_name'=>$request->work_name,
                 'position'=>$request->position, 
                 'start_year'=>$request->start_year,
                 'end_year'=>$request->end_year,
@@ -93,13 +93,24 @@ class FormCandidateController extends Controller
                 'id_candidate'=> $validateData['work_exp_id'], 
             ], 
             [
-                'name'=>$request->namei,
+                'work_name'=>$request->work_namei,
                 'position'=>$request->positioni, 
                 'start_year'=>$request->start_yeari,
                 'end_year'=>$request->end_yeari,
                 'description'=> $request->descriptioni,
                 'lead_name'=> $request->lead_namei,
                 'lead_phone_number'=> $request->lead_phone_numberi,
+                'id_candidate'=> $validateData['work_exp_id'],
+       
+            ], 
+            [
+                'work_name'=>$request->work_nameii,
+                'position'=>$request->positionii, 
+                'start_year'=>$request->start_yearii,
+                'end_year'=>$request->end_yearii,
+                'description'=> $request->descriptionii,
+                'lead_name'=> $request->lead_nameii,
+                'lead_phone_number'=> $request->lead_phone_numberii,
                 'id_candidate'=> $validateData['work_exp_id'],
        
             ] 
