@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Foto Ktp</label>
+                        <label class="form-label">Foto KTP</label>
                         <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
                         @error('personal_id_card')
@@ -233,9 +233,9 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Hubungan</label>
-                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status ') }}">
+                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status" value="{{ old('family_status') }}">
                         <span class="badge bg-secondary mt-2">contohnya ayah, ibu, wali , dll</span>
-                        @error('family_status ')
+                        @error('family_status')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -289,7 +289,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Tahun</label>
+                            <label class="form-label">Tahun Lulus</label>
                             <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}">
                             @error('grad_year')
                             <div class="invalid-feedback">
@@ -336,7 +336,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="name" value="Nama Instansi" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Pimpinan</label>
@@ -367,7 +367,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="namei" value="Nama Instansi" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Pimpinan</label>
