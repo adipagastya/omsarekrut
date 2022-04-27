@@ -189,6 +189,14 @@ class FormCandidateController extends Controller
             $validateData['health_information'] = $name; 
            
         }
+
+        if($request->hasFile('str_certificate')){
+            $image = $request->file('str_certificate');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['str_certificate'] = $name; 
+           
+        }
   
         
                
