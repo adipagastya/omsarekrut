@@ -71,8 +71,8 @@
                     
                     <div class="mb-3">
                         <label class="form-label">Nama Wilayah</label>
-                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah" required>
-                            <option selected>Pilih Wilayah</option>
+                        <select class="form-select @error('region_id') is-invalid @enderror" name="region_id" id="wilayah">
+                            <option value="" selected>Pilih Wilayah</option>
                             <option disabled value="">------------------</option>
                             @foreach ($regions as $region)
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
@@ -87,7 +87,7 @@
                     <div class="mb-3">
                         <label class="form-label">Nama Posisi</label>
                         <select class="form-select @error('workfield_id') is-invalid @enderror" name="workfield_id" id="posisi">
-                            <option>Pilih Posisi</option>
+                            <option value="">Pilih Posisi</option>
                             <option disabled value="">------------------</option>
                         </select>
                         @error('workfield_id')
@@ -117,23 +117,25 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">No. Telepon</label>
-                        <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}">
-                        @error('phone')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">No. Telepon</label>
+                            <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}">
+                            @error('phone')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}">
-                        @error('email')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                        <div class="col-md-6">
+                            <label class="form-label">E-Mail</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}">
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
@@ -157,51 +159,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Foto KTP</label>
-                        <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('personal_id_card')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Foto KK</label>
-                        <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('family_id_card')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Scan SKCK</label>
-                        <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('skck')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Surat Keterangan Sehat</label>
-                        <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
-                        @error('health_information')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                   
-
-                    <div class="mb-3">
                         <label class="form-label">Alamat Sesuai KTP</label>
                         <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Alamat Sesuai KTP" name="address" value="{{ old('address') }}">
                         @error('address')
@@ -219,6 +176,54 @@
                         </div>
                         @enderror
                     </div>
+                    
+                    <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Foto KTP</label>
+                        <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                        @error('personal_id_card')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Foto KK</label>
+                        <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                        @error('family_id_card')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Scan SKCK</label>
+                            <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            @error('skck')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Surat Keterangan Sehat</label>
+                            <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            @error('health_information')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
                     <div class="mb-3">
@@ -233,7 +238,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Hubungan</label>
-                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status ') }}">
+                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status') }}">
                         <span class="badge bg-secondary mt-2">*Contoh: Ayah, Ibu, Wali , dll</span>
                         @error('family_status')
                         <div class="invalid-feedback">
@@ -242,8 +247,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">No telp</label>
-                        <input type="text" class="form-control @error('family_phone') is-invalid @enderror" placeholder="No telp" name="family_phone" value="{{ old('ffamily_phone') }}">
+                        <label class="form-label">No. Telepon</label>
+                        <input type="text" class="form-control @error('family_phone') is-invalid @enderror" placeholder="No. Telepon" name="family_phone" value="{{ old('family_phone') }}">
                         @error('family_phone')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -274,8 +279,8 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Pendidikan Terakhir</label>
-                            <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level" required>
-                                <option selected>Pilih Pendidikan Terakhir</option>
+                            <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level">
+                                <option value="" selected>Pilih Pendidikan Terakhir</option>
                                 <option value="SMA/K">SMA/K</option>
                                 <option value="Diploma">Diploma</option>
                                 <option value="Sarjana">Sarjana</option>
@@ -289,8 +294,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Tahun</label>
-                            <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun" name="grad_year" value="{{ old('grad_year') }}">
+                            <label class="form-label">Tahun Lulus</label>
+                            <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun Lulus" name="grad_year" value="{{ old('grad_year') }}">
                             @error('grad_year')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -302,7 +307,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Scan Ijazah</label>
                             <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
                             @error('study_certificate')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -312,7 +317,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Scan Transkrip</label>
                             <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
                             @error('transcript')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -336,65 +341,104 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Pimpinan</label>
-                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="Nama Pimpinan" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">No. Kontak Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_number" value="No. Kontak Pimpinan" required>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Pimpinan</label>
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">No. Kontak Pimpinan</label>
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_number" value="No. Kontak Pimpinan">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi Terakhir</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="Posisi Terakhir" required>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position">
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_year" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_year" required>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Mulai</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_year">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Berhenti</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_year">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description">Deskripsi</textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
                     </div>
-
 
                     <div class="mb-3">
                         <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="Nama Instansi" required>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Pimpinan</label>
-                        <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="Nama Pimpinan" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">No. Kontak Pimpinan</label>
-                        <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberi" value="No. Kontak Pimpinan" required>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Pimpinan</label>
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">No. Kontak Pimpinan</label>
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberi" value="No. Kontak Pimpinan">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi Terakhir</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="Posisi Terakhir" required>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni">
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tanggal Resign</label>
-                        <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" required>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Mulai</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_yeari">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Berhenti</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_yeari">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni">Deskripsi</textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni"></textarea>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Nama Instansi</label>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_nameii">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Pimpinan</label>
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_nameii">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">No. Kontak Pimpinan</label>
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberii" value="No. Kontak Pimpinan">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Posisi Terakhir</label>
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positionii">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Mulai</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_yearii">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Berhenti</label>
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_yearii">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Deskripsi</label>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii"></textarea>
+                    </div>
+
+                    
                     <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
 
                     <div class="mb-3">
@@ -409,7 +453,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran <800kb</span>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
                         <div class="clone hide d-none">
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
