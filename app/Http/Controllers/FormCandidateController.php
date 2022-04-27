@@ -126,8 +126,6 @@ class FormCandidateController extends Controller
             {
                 $name = time().rand(1,100).'.'.$certificate->extension();
                 $certificate->move(public_path('certificates'), $name);    
-               
-
                 $certificateobject = new Certificate();
                 $certificateobject ->img_address = $name;
                 $certificateobject ->id_candidate = $validateData['certificate_id'];
@@ -189,6 +187,14 @@ class FormCandidateController extends Controller
             $name = time().rand(1,100).'.'.$image->extension();
             $image->move(public_path('candidate-image'),$name);
             $validateData['health_information'] = $name; 
+           
+        }
+
+        if($request->hasFile('str_certificate')){
+            $image = $request->file('str_certificate');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['str_certificate'] = $name; 
            
         }
   
