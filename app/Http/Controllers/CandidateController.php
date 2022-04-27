@@ -142,8 +142,28 @@ class CandidateController extends Controller
         if(File::exists(public_path('/candidate-image/'.$candidate->transcript))){
             File::delete(public_path('/candidate-image/'.$candidate->transcript));
         }
+
         if(File::exists(public_path('/candidate-image/'.$candidate->study_certificate))){
             File::delete(public_path('/candidate-image/'.$candidate->study_certificate));
+        }
+
+        if(File::exists(public_path('/candidate-image/'.$candidate->str_certificate))){
+            File::delete(public_path('/candidate-image/'.$candidate->str_certificate));
+        }
+       
+        if(File::exists(public_path('/candidate-image/'.$candidate->personal_id_card))){
+            File::delete(public_path('/candidate-image/'.$candidate->personal_id_card));
+        }
+        if(File::exists(public_path('/candidate-image/'.$candidate->family_id_card))){
+            File::delete(public_path('/candidate-image/'.$candidate->family_id_card));
+        }
+        
+        if(File::exists(public_path('/candidate-image/'.$candidate->skck))){
+            File::delete(public_path('/candidate-image/'.$candidate->skck));
+        }
+
+        if(File::exists(public_path('/candidate-image/'.$candidate->health_information))){
+            File::delete(public_path('/candidate-image/'.$candidate->health_information));
         }
 
         // Storage::delete(public_path().'/candidate-image/'.[$candidate->profile,$candidate->transcript,$candidate->study_certificate]);

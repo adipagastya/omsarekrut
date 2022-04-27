@@ -126,8 +126,6 @@ class FormCandidateController extends Controller
             {
                 $name = time().rand(1,100).'.'.$certificate->extension();
                 $certificate->move(public_path('certificates'), $name);    
-               
-
                 $certificateobject = new Certificate();
                 $certificateobject ->img_address = $name;
                 $certificateobject ->id_candidate = $validateData['certificate_id'];
