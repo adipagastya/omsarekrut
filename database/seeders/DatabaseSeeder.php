@@ -38,11 +38,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Yogyakarta'
         ]);
 
-        // WorkField::create([
-        //     'name' => 'Admin',
-        //     'type' => 'Non Medical',
-        //     'region_id' => 1
-        // ]);
+        WorkField::create([
+            'name' => 'Admin',
+            'type' => 'Non Medical',
+            'region_id' => 1
+        ]);
+
+        WorkField::create([
+            'name' => 'Dokter',
+            'type' => 'Medical',
+            'region_id' => 1
+        ]);
 
         // Candidate::create([
         //     'name' => 'Putu Adipa',

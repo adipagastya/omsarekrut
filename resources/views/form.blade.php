@@ -238,7 +238,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Hubungan</label>
-                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status " value="{{ old('family_status') }}">
+                        <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status" value="{{ old('family_status') }}">
                         <span class="badge bg-secondary mt-2">*Contoh: Ayah, Ibu, Wali , dll</span>
                         @error('family_status')
                         <div class="invalid-feedback">
