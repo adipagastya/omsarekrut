@@ -177,4 +177,11 @@ class CandidateController extends Controller
     
         return  response()->download($path, $certificate_address, $headers);
     }
+    
+    public function getCandidateImage($imgurl){
+        $path = public_path('/candidate-image/'.$imgurl); 
+        $headers = ['Content-Type: image/jpeg '];
+    
+        return  response()->download($path, $imgurl, $headers);
+    }
 }

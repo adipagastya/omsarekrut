@@ -25,6 +25,23 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favico/favicon-16x16.png">
     <link rel="manifest" href="/img/favico/site.webmanifest"> 
+    <style>
+        h1 {
+            display: flex;
+            font-size: 16px;
+            flex-direction: row;
+            }
+        h1:after{
+            content: "";
+            flex: 1 1;
+            border-bottom: 1px solid;
+            margin: auto;
+        }
+        h1:after {
+            margin-left: 10px
+        }
+      </style>
+
 </head>
 
 <body>
@@ -78,6 +95,7 @@
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
                             @endforeach
                         </select>
+                        <span class="badge bg-danger mt-2">*Pilih wilayah terlebih dahulu</span>
                         @error('region_id')
                             <div class="invalid-feedback">
                             {{ $message }}
@@ -109,7 +127,7 @@
                     <div class="mb-3"><b>DATA DIRI</b></div>
 
                     <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
+                        <label class="form-label">Nama Lengkap <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
                         @error('name')
                         <div class="invalid-feedback">
@@ -119,7 +137,7 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">No. Telepon</label>
+                            <label class="form-label">No. Telepon <span style="color:red">*</span></label>
                             <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="No. Telepon" name="phone" value="{{ old('phone') }}">
                             @error('phone')
                             <div class="invalid-feedback">
@@ -128,7 +146,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">E-Mail</label>
+                            <label class="form-label">E-Mail <span style="color:red">*</span></label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail" name="email" value="{{ old('email') }}">
                             @error('email')
                             <div class="invalid-feedback">
@@ -139,7 +157,7 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Tempat Lahir</label>
+                            <label class="form-label">Tempat Lahir <span style="color:red">*</span></label>
                             <input type="text" class="form-control @error('place_birth') is-invalid @enderror" placeholder="Tempat Lahir" name="place_birth" value="{{ old('place_birth') }}">
                             @error('place_birth')
                                 <div class="invalid-feedback">
@@ -148,7 +166,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Tanggal Lahir</label>
+                            <label class="form-label">Tanggal Lahir <span style="color:red">*</span></label>
                             <input type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ old('date_birth') }}">
                             @error('date_birth')
                                 <div class="invalid-feedback">
@@ -159,7 +177,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Alamat Sesuai KTP</label>
+                        <label class="form-label">Alamat Sesuai KTP <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Alamat Sesuai KTP" name="address" value="{{ old('address') }}">
                         @error('address')
                         <div class="invalid-feedback">
@@ -168,7 +186,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Alamat Domisili</label>
+                        <label class="form-label">Alamat Domisili <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('residence_address') is-invalid @enderror" placeholder="Alamat Domisili" name="residence_address" value="{{ old('residence_address') }}">
                         @error('residence_address')
                         <div class="invalid-feedback">
@@ -179,9 +197,9 @@
                     
                     <div class="row g-3 mb-3">
                     <div class="col-md-6">
-                        <label class="form-label">Foto KTP</label>
+                        <label class="form-label">Foto KTP <span style="color:red">*</span></label>
                         <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                         @error('personal_id_card')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -190,9 +208,9 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Foto KK</label>
+                        <label class="form-label">Foto KK <span style="color:red">*</span></label>
                         <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                         @error('family_id_card')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -205,7 +223,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Scan SKCK</label>
                             <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                             @error('skck')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -216,7 +234,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Surat Keterangan Sehat</label>
                             <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                             @error('health_information')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -227,7 +245,7 @@
 
                     <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
                     <div class="mb-3">
-                        <label class="form-label">Nama</label>
+                        <label class="form-label">Nama <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('family_name') is-invalid @enderror" placeholder="Nama" name="family_name" value="{{ old('family_name') }}">
                       
                         @error('family_name')
@@ -237,18 +255,18 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Hubungan</label>
+                        <label class="form-label">Hubungan <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status" value="{{ old('family_status') }}">
                         <span class="badge bg-secondary mt-2">*Contoh: Ayah, Ibu, Wali , dll</span>
-                        @error('family_status')
+                        @error('family_status')location
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">No. Telepon</label>
-                        <input type="text" class="form-control @error('family_phone') is-invalid @enderror" placeholder="No. Telepon" name="family_phone" value="{{ old('family_phone') }}">
+                        <label class="form-label">No. Telepon <span style="color:red">*</span></label>
+                        <input type="number" class="form-control @error('family_phone') is-invalid @enderror" placeholder="No. Telepon" name="family_phone" value="{{ old('family_phone') }}">
                         @error('family_phone')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -259,7 +277,7 @@
                     <div class="mb-3"><b>PENDIDIKAN TERAKHIR</b></div>
 
                     <div class="mb-3">
-                        <label class="form-label">Nama Universitas / Institut / Sekolah</label>
+                        <label class="form-label">Nama Universitas / Institut / Sekolah <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('studies') is-invalid @enderror" placeholder="Nama Universitas / Institut / Sekolah" name="studies" value="{{ old('studies') }}">
                         @error('studies')
                         <div class="invalid-feedback">
@@ -268,7 +286,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jurusan</label>
+                        <label class="form-label">Jurusan <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('major') is-invalid @enderror" placeholder="Jurusan" name="major" value="{{ old('major') }}">
                         @error('major')
                         <div class="invalid-feedback">
@@ -278,7 +296,7 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Pendidikan Terakhir</label>
+                            <label class="form-label">Pendidikan Terakhir <span style="color:red">*</span></label>
                             <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level">
                                 <option value="" selected>Pilih Pendidikan Terakhir</option>
                                 <option value="SMA/K">SMA/K</option>
@@ -294,8 +312,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Tahun Lulus</label>
-                            <input type="text" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun Lulus" name="grad_year" value="{{ old('grad_year') }}">
+                            <label class="form-label">Tahun Lulus <span style="color:red">*</span></label>
+                            <input type="number" class="form-control @error('grad_year') is-invalid @enderror" placeholder="Tahun Lulus" name="grad_year" value="{{ old('grad_year') }}">
                             @error('grad_year')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -305,9 +323,9 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Scan Ijazah</label>
+                            <label class="form-label">Scan Ijazah / Surat Keterangan Lulus <span style="color:red">*</span></label>
                             <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                             @error('study_certificate')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -317,7 +335,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Scan Transkrip</label>
                             <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                             @error('transcript')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -326,9 +344,9 @@
                         </div>
                     </div>
                     <div class="mb-3" id="checkdisplay">
-                        <label class="form-label">Sertifikat STR</label>
+                        <label class="form-label">Sertifikat STR / STRA / STRTTK</label>
                         <input type="file" class="form-control @error('str_certificate') is-invalid @enderror" name="str_certificate">
-                        <span class="badge bg-danger mt-2">*Wajib untuk pelamar medis </span>
+                        <span class="badge bg-danger mt-2">*Wajib untuk pelamar medis, dalam format .jpg < 1MB </span>
                         @error('str_certificate')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -340,102 +358,102 @@
                     <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
 
                     <div class="mb-3">
-                        <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name">
+                        <h1>Nama Instansi 1</h1>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="{{ old('work_name') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Nama Pimpinan</label>
-                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name">
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_name" value="{{ old('lead_name') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">No. Kontak Pimpinan</label>
-                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_number" value="No. Kontak Pimpinan">
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_number" value="{{ old('lead_phone_number') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi Terakhir</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position">
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="position" value="{{ old('position') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Mulai</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="start_year">
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_year" value="{{ old('start_year') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Berhenti</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="end_year">
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_year" value="{{ old('end_year') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description"></textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="description">{{ old('description') }}</textarea>
                     </div>
-                    <hr>
+                    <br>
                     <div class="mb-3">
-                        <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei">
+                        <h1>Nama Instansi 2</h1>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="{{ old('work_namei') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Nama Pimpinan</label>
-                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei">
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_namei" value="{{ old('lead_namei') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">No. Kontak Pimpinan</label>
-                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberi" value="No. Kontak Pimpinan">
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberi" value="{{ old('lead_phone_numberi') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi Terakhir</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni">
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positioni" value="{{ old('positioni') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Mulai</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="start_yeari">
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_yeari" value="{{ old('start_yeari') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Berhenti</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="end_yeari">
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_yeari" value="{{ old('end_yeari') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni"></textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptioni">{{ old('descriptioni') }}</textarea>
                     </div>
-                    <hr>
+                    <br>
                     <div class="mb-3">
-                        <label class="form-label">Nama Instansi</label>
-                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_nameii">
+                        <h1>Nama Instansi 3</h1>
+                        <input type="text" class="form-control" placeholder="Nama Instansi" name="work_nameii" value="{{ old('work_nameii') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Nama Pimpinan</label>
-                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_nameii">
+                            <input type="text" class="form-control" placeholder="Nama Pimpinan" name="lead_nameii" value="{{ old('lead_nameii') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">No. Kontak Pimpinan</label>
-                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberii" value="No. Kontak Pimpinan">
+                            <input type="number" class="form-control" placeholder="No. Kontak Pimpinan" name="lead_phone_numberii" value="{{ old('lead_phone_numberii') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Posisi Terakhir</label>
-                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positionii">
+                        <input type="text" class="form-control" placeholder="Posisi terakhir" name="positionii" value="{{ old('positionii') }}">
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Mulai</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="start_yearii">
+                            <input type="date" class="form-control" placeholder="Tahun" name="start_yearii" value="{{ old('start_yearii') }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tanggal Berhenti</label>
-                            <input type="date" class="form-control" placeholder="Tahun" name="end_yearii">
+                            <input type="date" class="form-control" placeholder="Tahun" name="end_yearii" value="{{ old('end_yearii') }}">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii"></textarea>
+                        <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii">{{ old('descriptionii') }}</textarea>
                     </div>
 
                     
@@ -453,7 +471,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran 1MB</span>
+                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                         <div class="clone hide d-none">
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                             <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
@@ -469,8 +487,12 @@
                         </div>
                     </div>
 
-                    <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal")">Kirim Lamaran</button>
+                    <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Kirim Lamaran</button>
+                    <br>
+                    <div style="height: 10px"></div>
+                    <span style="color:red ; margin-top:20px">* Wajib diisi </span>
                 </div>
+                
             </div>
 
             <!-- Modal -->

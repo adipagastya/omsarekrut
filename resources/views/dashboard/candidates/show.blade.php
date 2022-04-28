@@ -27,27 +27,50 @@
             <h3 class="card-title">Foto Kandidat</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->profile) }}" alt="Photo">
-            </div>
-          </form>
+          <div class="card-body">
+            <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->profile) }}" alt="Photo">
+          </div>
         </div>
-      </div>
         <!-- /.card -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Bidang Pekerjaan</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <div class="form-group">
+                <label>Wilayah</label>
+                <p>
+                  @foreach ($regions as $region)
+                  {{ $candidate->region_id == $region->id ? $region->name : '' }}@endforeach
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Bidang Pekerjaan</label>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}@endforeach
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tipe</label>
+                <p>
+                  @foreach ($workfields as $workfield)
+                  {{ $candidate->workfield_id == $workfield->id ? $workfield->type : '' }}@endforeach
+                </p>
+              </div>
+            </div>
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+
       <div class="col-lg-8">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Data Diri</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Lengkap</label>
@@ -80,58 +103,13 @@
                 </p>
               </div>
             </div>
-          </form>
         </div>
         <!-- /.card -->
-      </div>
-      <div class="col-lg-4">
-        <!-- /.card -->
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Bidang Pekerjaan</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
-            <div class="card-body">
-              <div class="form-group">
-                <label>Wilayah</label>
-                <p>
-                  @foreach ($regions as $region)
-                  {{ $candidate->region_id == $region->id ? $region->name : '' }}@endforeach
-                </p>
-              </div>
-              <div class="form-group">
-                <label>Bidang Pekerjaan</label>
-                <p>
-                  @foreach ($workfields as $workfield)
-                  {{ $candidate->workfield_id == $workfield->id ? $workfield->name : '' }}@endforeach
-                </p>
-              </div>
-              <div class="form-group">
-                <label>Tipe</label>
-                <p>
-                  @foreach ($workfields as $workfield)
-                  {{ $candidate->workfield_id == $workfield->id ? $workfield->type : '' }}@endforeach
-                </p>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- /.card -->
-      </div>
-      <div class="col-lg-8">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Pendidikan Terakhir</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Universitas / Institut / Sekolah</label>
@@ -163,134 +141,68 @@
                   {{ $candidate->grad_year }}
                 </p>
               </div>
-              {{-- <div class="form-group">
-                <label>Scan Ijazah</label>
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" value="{{ $candidate->study_certificate }}"> 
-                  <span class="input-group-append">
-                    <a class="btn btn-info btn-flat" href="{{ route('getimage',$candidate->study_certificate) }}"> Download</a>
-                    <button type="button" class="btn btn-info btn-flat">Download</button>
-                  </span>
+              <label>Scan Ijazah</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan Ijazah" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#ijazahModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->transcript) }}" class="btn btn-success" type="button" >Download</a>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ijazahModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Ijazah</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->study_certificate) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal -->
+ 
+                 </div>
+               </div>
+               <br>
+               <label>Scan Transkrip</label>
+               <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan Transkrip" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#transkripModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->transcript) }}" class="btn btn-success" type="button" >Download</a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="transkripModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Transkrip Nilai</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->transcript) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   <!-- End Modal -->
+
                 </div>
-              </div> --}}
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan KTP</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->personal_id_card) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan Kartu Keluarga</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->family_id_card) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-      
-      <div class="col-lg-6">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan Ijazah</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->study_certificate) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan Transcript Nilai</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->transcript) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-
-      @if ($candidate->skck != null)
-      <div class="col-lg-4">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan SKCK</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->skck) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-      @endif
-
-      @if ($candidate->health_information != null)
-      <div class="col-lg-4">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan Surat Sehat</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->health_information) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-      @endif
-
-      @if ($candidate->str_certificate != null)
-      <div class="col-lg-4">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Scan STR</h3>
-          </div>
-          <!-- /.card-header -->
-            <div class="card-body">
-              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->str_certificate) }}" alt="Photo">
-            </div>
-        </div>
-      </div>
-      @endif
-
-      <div class="col-lg-3">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Sertifikat Pendukung</h3>
-          </div>
-          <div class="card-body"><div class="form-group">
-              @foreach ($certificates as $certificate)
-              <div class="input-group input-group-sm mt-2">
-                <input type="text" class="form-control" value="Sertifikat penunjang {{  $loop->iteration }}"> 
-                  <span class="input-group-append">
-                    <a class="btn btn-info btn-flat" href="{{ route('getimage', $certificate->img_address) }}"> Download</a>
-                    {{-- {{route('getfile', 'lr-file.png')}} --}}
-                {{-- <button type="button" class="btn btn-info btn-flat">Download</button> --}}
-                </span>
               </div>
-              @endforeach
-          </div>
-          </div>
+            </div>
         </div>
-      </div>
-
-      @foreach ($workexps as $workexp)
-      @if ($candidate->work_exp_id == $workexp->id_candidate)
-      @if ($workexp->work_name != null)
-      <div class="col-lg-3">
+        <!-- /.card -->
+        @foreach ($workexps as $workexp)
+        @if ($candidate->work_exp_id == $workexp->id_candidate)
+        @if ($workexp->work_name != null)
         <!-- /.card -->
         <div class="card card-primary">
           <div class="card-header">
@@ -338,48 +250,136 @@
               </div>
             </div>
         </div>
-      </div>
-      @endif
-      @endif
-      @endforeach
-        
-        
+        @endif
+        @endif
+        @endforeach
 
-        
-        <!-- /.card -->
-
-        {{-- <div class="card card-primary">
+        <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Sertifikat Penunjuang</h3>
+            <h3 class="card-title">Dokumen Kelengkapan</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
-              <div class="form-group">
-                <label>Sertifikat - 1</label>
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" value="sertifikat 1"> 
-                    <span class="input-group-append">
-                  <button type="button" class="btn btn-info btn-flat">Download</button>
-                  </span>
+              <label>Scan SKCK</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan SKCK" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#skckModalCenter" >View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->skck) }}" class="btn btn-success" type="button" >Download</a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="skckModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">SKCK</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->skck) }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
-              <div class="form-group">
-                <label>Sertifikat - 2</label>
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" value="sertifikat 2"> 
-                    <span class="input-group-append">
-                  <button type="button" class="btn btn-info btn-flat">Download</button>
-                  </span>
+              <br>
+              <label>Scan Surat Sehat</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Surat Sehat" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#suratSehatModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->health_information) }}" class="btn btn-success" type="button" >Download</a>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="suratSehatModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Surat Keterangan Sehat</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->health_information) }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <!-- End Modal -->
                 </div>
               </div>
+              <br>
+              <label>Scan STR</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan STR" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#strModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->str_certificate) }}" class="btn btn-success" type="button" >Download</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="strModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">STR / STRA /STRTTK</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->str_certificate) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   <!-- End Modal -->
+
+                </div>
+              </div>
+              <br>
+
+          
+              @if (!$certificates->isEmpty())
+              <label>Scan Sertifikat Pendukung</label>
+              @foreach ($certificates as $certificate)
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Sertifikat penunjang" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#srtPendukungModalCenter">View</button>
+                  <a href="{{ route('getimage', $certificate->img_address) }}" class="btn btn-success" type="button" >Download</a>
+              
+                      <!-- Modal -->
+                  <div class="modal fade" id="srtPendukungModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Surat Keterangan Sehat</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->health_information) }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <!-- End Modal -->
+
+                </div>
+              </div>
+
+              @endforeach
+              @endif
+              <br>
             </div>
-          </form>
-        </div> --}}
-        
+        </div>
+      </div>
+      <!-- /.col -->
     </div>
     <!--/.col (left) -->
     <!-- /.row -->
