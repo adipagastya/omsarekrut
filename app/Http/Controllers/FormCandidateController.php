@@ -79,7 +79,7 @@ class FormCandidateController extends Controller
         // dd($validateData); 
 
         $validateData['certificate_id'] = $this->generateUniqueCode();
-        $validateData['work_exp_id'] = $this->generateUniqueCode();
+        $validateData['work_exp_id'] = $this->generateUniqueCodeForWorkExp();
 
         $data = [
             [
@@ -189,6 +189,14 @@ class FormCandidateController extends Controller
             $validateData['health_information'] = $name; 
            
         }
+
+        if($request->hasFile('str_certificate')){
+            $image = $request->file('str_certificate');
+            $name = time().rand(1,100).'.'.$image->extension();
+            $image->move(public_path('candidate-image'),$name);
+            $validateData['str_certificate'] = $name; 
+           
+        }
   
         
                
@@ -248,6 +256,15 @@ class FormCandidateController extends Controller
         do {
             $code = random_int(100000, 999999);
         } while (Candidate::where("certificate_id", "=", $code)->first());
+  
+        return $code;
+    }
+
+    public function generateUniqueCodeForWorkExp()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Candidate::where("work_exp_id", "=", $code)->first());
   
         return $code;
     }
