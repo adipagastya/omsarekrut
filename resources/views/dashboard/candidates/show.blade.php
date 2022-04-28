@@ -8,6 +8,9 @@
       <div class="col-sm-6">
         <h1>{{ $title }}</h1>
       </div>
+      <div class="col-sm-6">
+        <a href="/dashboard/candidates/{{ $candidate->id }}/edit" class="btn btn-success p-2 float-right"><i class="fas fa-check mr-2"></i>Konfirmasi</a>
+      </div>
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -136,12 +139,12 @@
                   {{ $candidate->studies }}
                 </p>
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label>No Telepon</label>
                 <p>
                   {{ $candidate->phone }}
                 </p>
-              </div>
+              </div> --}}
               <div class="form-group">
                 <label>Jurusan</label>
                 <p>
@@ -174,40 +177,94 @@
           </form>
         </div>
       </div>
+      <div class="col-lg-6">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan KTP</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->personal_id_card) }}" alt="Photo">
+            </div>
+        </div>
+      </div>
 
+      <div class="col-lg-6">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan Kartu Keluarga</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->family_id_card) }}" alt="Photo">
+            </div>
+        </div>
+      </div>
       
       <div class="col-lg-6">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Scan Ijasah</h3>
+            <h3 class="card-title">Scan Ijazah</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
               <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->study_certificate) }}" alt="Photo">
             </div>
-          </form>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Scan Transcript</h3>
+            <h3 class="card-title">Scan Transcript Nilai</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
               <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->transcript) }}" alt="Photo">
             </div>
-          </form>
         </div>
       </div>
+
+      @if ($candidate->skck != null)
+      <div class="col-lg-4">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan SKCK</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->skck) }}" alt="Photo">
+            </div>
+        </div>
+      </div>
+      @endif
+
+      @if ($candidate->health_information != null)
+      <div class="col-lg-4">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan Surat Sehat</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->health_information) }}" alt="Photo">
+            </div>
+        </div>
+      </div>
+      @endif
+
+      @if ($candidate->str_certificate != null)
+      <div class="col-lg-4">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Scan STR</h3>
+          </div>
+          <!-- /.card-header -->
+            <div class="card-body">
+              <img class="img-fluid pad" src="{{ asset('candidate-image/'.$candidate->str_certificate) }}" alt="Photo">
+            </div>
+        </div>
+      </div>
+      @endif
 
       <div class="col-lg-3">
         <div class="card card-primary">
@@ -232,6 +289,7 @@
 
       @foreach ($workexps as $workexp)
       @if ($candidate->work_exp_id == $workexp->id_candidate)
+      @if ($workexp->work_name != null)
       <div class="col-lg-3">
         <!-- /.card -->
         <div class="card card-primary">
@@ -239,21 +297,37 @@
             <h3 class="card-title">Pengalaman Kerja</h3>
           </div>
           <!-- /.card-header -->
-          <!-- form start -->
-          <form method="post" action="/dashboard/workfields/{{ $candidate->id }}">
-            @method('put')
-            @csrf
             <div class="card-body">
               <div class="form-group">
                 <label>Nama Instansi</label>
                 <p>
-                  {{ $workexp->name }}
+                  {{ $workexp->work_name }}
                 </p>
               </div>
               <div class="form-group">
-                <label>Tahun</label>
+                <label>Jabatan</label>
                 <p>
-                  {{ $workexp->year }}
+                  {{ $workexp->position }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Mulai</label>
+                <p>
+                  {{ $workexp->start_year }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Berhenti</label>
+                <p>
+                  {{ $workexp->end_year }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Lama Kerja</label>
+                <p> <?php
+                $age = date_diff(date_create($workexp->end_year), date_create($workexp->start_year));
+                  echo $age->format("%y tahun %m bulan"); 
+                ?>
                 </p>
               </div>
               <div class="form-group">
@@ -263,9 +337,9 @@
                 </p>
               </div>
             </div>
-          </form>
         </div>
       </div>
+      @endif
       @endif
       @endforeach
         
