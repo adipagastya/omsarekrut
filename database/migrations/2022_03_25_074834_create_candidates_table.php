@@ -30,7 +30,7 @@ class CreateCandidatesTable extends Migration
             $table->enum('edu_level', ['SMA/K', 'Diploma', 'Sarjana']);
             $table->string('grad_year');
             $table->string('study_certificate');
-            $table->string('transcript');
+            $table->string('transcript')->nullable();
             $table->string('str_certificate')->nullable();
             $table->string('personal_id_card');
             $table->string('family_id_card');
