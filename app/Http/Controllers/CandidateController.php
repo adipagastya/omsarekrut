@@ -71,7 +71,6 @@ class CandidateController extends Controller
             'workexps' => $workexp::all(),
             'workCount' => $workfield,
             'candidate' => $candidate, 
-            'certificates' => Certificate::where('id_candidate', '=', $candidate->certificate_id)->get()
         ]);
     }
 
@@ -122,14 +121,16 @@ class CandidateController extends Controller
      */
     public function destroy(Candidate $candidate, WorkExperience $workexperience)
     {
-        $certificates = Certificate::where('id_candidate', '=', $candidate->certificate_id)->get(); 
-        foreach($certificates as $certif){
-            if(File::exists(public_path('/certificates/'.$certif->img_address))){
-                File::delete(public_path('/certificates/'.$certif->img_address));
-            } 
-        }
-        Certificate::where('id_candidate','=', $candidate->certificate_id)->delete();
+        // $certificates = Certificate::where('id_candidate', '=', $candidate->certificate_id)->get(); 
+        // foreach($certificates as $certif){
+        //     if(File::exists(public_path('/certificates/'.$certif->img_address))){
+        //         File::delete(public_path('/certificates/'.$certif->img_address));
+        //     } 
+        // }
+        // Certificate::where('id_candidate','=', $candidate->certificate_id)->delete();
+
         Candidate::destroy($candidate->id);
+
         WorkExperience::where('id_candidate','=', $candidate->work_exp_id)->delete();
 
 
@@ -137,6 +138,9 @@ class CandidateController extends Controller
 
         if(File::exists(public_path('/candidate-image/'.$candidate->profile))){
             File::delete(public_path('/candidate-image/'.$candidate->profile));
+        }
+        if(File::exists(public_path('/candidate-image/'.$candidate->certificate_address))){
+            File::delete(public_path('/candidate-image/'.$candidate->certificate_address));
         }
         
         if(File::exists(public_path('/candidate-image/'.$candidate->transcript))){
