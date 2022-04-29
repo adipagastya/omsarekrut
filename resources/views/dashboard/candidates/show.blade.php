@@ -102,6 +102,75 @@
                 {{ $candidate->date_birth }}
                 </p>
               </div>
+              <div class="form-group">
+                <label>Alamat KTP</label>
+                <p>
+                {{ $candidate->address }}
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Alamat Domisili</label>
+                <p>
+                {{ $candidate->residence_address }}
+                </p>
+              </div>
+              <label>Scan KTP</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan KTP" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#ktpModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->personal_id_card) }}" class="btn btn-success" type="button" >Download</a>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ktpModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">KTP</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->personal_id_card) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal -->
+ 
+                 </div>
+               </div>
+               <br>
+               <label>Scan Kartu Keluarga</label>
+               <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan Kartu Keluarga" readonly>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#kkModalCenter">View</button>
+                  <a href="{{ route('getCandidateImage', $candidate->family_id_card) }}" class="btn btn-success" type="button" >Download</a>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="kkModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Kartu Keluarga</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->family_id_card) }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal -->
+ 
+                 </div>
+               </div>
             </div>
         </div>
         <!-- /.card -->
@@ -282,14 +351,12 @@
                       </div>
                     </div>
                   </div>
-
-
                 </div>
               </div>
               <br>
               <label>Scan Surat Sehat</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Surat Sehat" readonly>
+                <input type="text" class="form-control" placeholder="Scan Surat Sehat" readonly>
                 <div class="input-group-append">
                   <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#suratSehatModalCenter">View</button>
                   <a href="{{ route('getCandidateImage', $candidate->health_information) }}" class="btn btn-success" type="button" >Download</a>
@@ -347,7 +414,7 @@
               <label>Scan Sertifikat Pendukung</label>
               @foreach ($certificates as $certificate)
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Sertifikat penunjang" readonly>
+                <input type="text" class="form-control" placeholder="Scan Sertifikat Pendukung" readonly>
                 <div class="input-group-append">
                   <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#srtPendukungModalCenter">View</button>
                   <a href="{{ route('getimage', $certificate->img_address) }}" class="btn btn-success" type="button" >Download</a>
