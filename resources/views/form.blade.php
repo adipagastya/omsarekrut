@@ -40,24 +40,6 @@
         h1:after {
             margin-left: 10px
         }
-
-
-        /* h1 {
-          margin: 10px auto;
-          text-align: left;
-          font-size: 16px;
-          position: relative;
-        }
-        h1:after {
-          content: "";
-          display: block;
-          width: 730px;
-          height: 5px;
-          background: black;
-          right: 0;
-          top: 50%;
-          position: absolute;
-        } */
       </style>
 
 </head>
@@ -277,7 +259,7 @@
                         <label class="form-label">Hubungan <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('family_status') is-invalid @enderror" placeholder="Hubungan" name="family_status" value="{{ old('family_status') }}">
                         <span class="badge bg-secondary mt-2">*Contoh: Ayah, Ibu, Wali , dll</span>
-                        @error('family_status')
+                        @error('family_status')location
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -343,7 +325,7 @@
                     </div>
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Scan Ijazah / Surat Keterangan Lulus<span style="color:red">*</span></label>
+                            <label class="form-label">Scan Ijazah / Surat Keterangan Lulus <span style="color:red">*</span></label>
                             <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
                             <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                             @error('study_certificate')
@@ -506,8 +488,12 @@
                         </div>
                     </div>
 
-                    <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal")">Kirim Lamaran</button>
+                    <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Kirim Lamaran</button>
+                    <br>
+                    <div style="height: 10px"></div>
+                    <span style="color:red ; margin-top:20px">* Wajib diisi </span>
                 </div>
+                
             </div>
 
             <!-- Modal -->

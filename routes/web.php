@@ -55,3 +55,4 @@ Route::resource('/dashboard/candidates', CandidateController::class)->middleware
 
 Route::get('/recruit/{idregion}',[ShowJobsByRegion::class,'showJobsByRegion'] ); 
 Route::get('public/{certificate_address}', [CandidateController::class, 'getImage'])->name('getimage'); 
+Route::get('public/candidate/{imgurl}', [CandidateController::class, 'getCandidateImage'])->name('getCandidateImage'); 

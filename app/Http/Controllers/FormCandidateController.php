@@ -71,8 +71,8 @@ class FormCandidateController extends Controller
             "application_date" => "required", 
             "region_id" => "required",
             "workfield_id" => "required",
-            "img_address" => "max:1024",
-            "img_address.*" => "max:1024",
+            "img_address" => "image|max:1024",
+            "img_address.*" => "image|max:1024",
 
         ]); 
 
