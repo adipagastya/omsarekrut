@@ -146,7 +146,7 @@
                 <input type="text" class="form-control" placeholder="Scan Ijazah" readonly>
                 <div class="input-group-append">
                   <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#ijazahModalCenter">View</button>
-                  <a href="{{ route('getCandidateImage', $candidate->transcript) }}" class="btn btn-success" type="button" >Download</a>
+                  <a href="{{ route('getCandidateImage', $candidate->study_certificate) }}" class="btn btn-success" type="button" >Download</a>
 
 
                     <!-- Modal -->
@@ -170,6 +170,9 @@
                  </div>
                </div>
                <br>
+                @if (!$candidate->transcript == null)
+                    
+               
                <label>Scan Transkrip</label>
                <div class="input-group">
                 <input type="text" class="form-control" placeholder="Scan Transkrip" readonly>
@@ -197,6 +200,7 @@
 
                 </div>
               </div>
+              @endif
             </div>
         </div>
         <!-- /.card -->
@@ -260,6 +264,7 @@
           </div>
           <!-- /.card-header -->
             <div class="card-body">
+              @if (!$candidate->skck == null)
               <label>Scan SKCK</label>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Scan SKCK" readonly>
@@ -287,6 +292,9 @@
                 </div>
               </div>
               <br>
+              @endif
+              @if (!$candidate->health_information == null)
+                  
               <label>Scan Surat Sehat</label>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Surat Sehat" readonly>
@@ -313,6 +321,10 @@
                  <!-- End Modal -->
                 </div>
               </div>
+              @endif
+
+              @if (!$candidate->str_certificate == null)
+                  
               <br>
               <label>Scan STR</label>
               <div class="input-group">
@@ -341,7 +353,7 @@
                 </div>
               </div>
               <br>
-
+              @endif
           
               @if (!$certificates->isEmpty())
               <label>Scan Sertifikat Pendukung</label>
@@ -363,7 +375,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                            <img class="img-fluid" src="{{ asset('candidate-image/'.$candidate->health_information) }}">
+                            <img class="img-fluid" src="{{ asset('candidate-image/'.$certificate->img_address) }}">
                         </div>
                       </div>
                     </div>
