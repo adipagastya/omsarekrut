@@ -261,6 +261,7 @@
                         </div>
                     </div>
 
+                    <br>
                     <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
                     <div class="mb-3">
                         <label class="form-label">Nama <span style="color:red">*</span></label>
@@ -292,6 +293,7 @@
                         @enderror
                     </div>
 
+                    <br>
                     <div class="mb-3"><b>PENDIDIKAN TERAKHIR</b></div>
 
                     <div class="mb-3">
@@ -372,7 +374,7 @@
                         @enderror
                     </div>
         
-
+                    <br>
                     <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
 
                     <div class="mb-3">
@@ -473,8 +475,7 @@
                         <label class="form-label">Deskripsi</label>
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii">{{ old('descriptionii') }}</textarea>
                     </div>
-
-                    
+                    <br>
                     <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
 
                     <div class="mb-3">
