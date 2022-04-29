@@ -425,10 +425,9 @@
 
               @if (!$candidate->certificate_address == null)
                   
-              <br>
-              <label>Scan Pendukung</label>
+              <label>Scan Sertifikat Pendukung</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Scan STR" readonly>
+                <input type="text" class="form-control" placeholder="Scan Sertifikat Pendukung" readonly>
                 <div class="input-group-append">
                   {{-- <a href="{{ link_to_asset('candidate-image/'.$candidate->str_certificate) }}" class="btn btn-outline-success" type="button">View</a> --}}
                   <a href="{{ asset('candidate-image/'.$candidate->certificate_address) }}" target="_blank" class="btn btn-outline-success" type="button">View</a>
