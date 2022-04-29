@@ -95,7 +95,7 @@
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
                             @endforeach
                         </select>
-                        <span class="badge bg-danger mt-2">*Pilih wilayah terlebih dahulu</span>
+                        <span class="badge bg-secondary mt-2">*Pilih wilayah terlebih dahulu</span>
                         @error('region_id')
                             <div class="invalid-feedback">
                             {{ $message }}
@@ -194,54 +194,6 @@
                         </div>
                         @enderror
                     </div>
-                    
-                    <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Foto KTP <span style="color:red">*</span></label>
-                        <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                        @error('personal_id_card')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Foto KK <span style="color:red">*</span></label>
-                        <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                        @error('family_id_card')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    </div>
-
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Scan SKCK</label>
-                            <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                            @error('skck')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Surat Keterangan Sehat</label>
-                            <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                            @error('health_information')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
 
                     <br>
                     <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
@@ -321,38 +273,6 @@
                             </div>
                             @enderror
                         </div>
-                    </div>
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Scan Ijazah / Surat Keterangan Lulus <span style="color:red">*</span></label>
-                            <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                            @error('study_certificate')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Scan Transkrip</label>
-                            <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript">
-                            <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                            @error('transcript')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-3" id="checkdisplay">
-                        <label class="form-label">Sertifikat STR / STRA / STRTTK</label>
-                        <input type="file" class="form-control @error('str_certificate') is-invalid @enderror" name="str_certificate">
-                        <span class="badge bg-danger mt-2">*Wajib untuk pelamar medis, dalam format .jpg < 1MB </span>
-                        @error('str_certificate')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
                     </div>
         
                     <br>
@@ -457,34 +377,94 @@
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii">{{ old('descriptionii') }}</textarea>
                     </div>
                     <br>
-                    <div class="mb-3"><b>SERTIFIKAT PENUNJANG</b></div>
+                    <div class="mb-3"><b>DOKUMEN PENUNJANG</b></div>
 
+                    
+                    <div class="mb-3" id="checkdisplay">
+                        <label class="form-label">Sertifikat STR / STRA / STRTTK</label>
+                        <input type="file" class="form-control @error('str_certificate') is-invalid @enderror" name="str_certificate">
+                        <span class="badge bg-danger mt-2">*Wajib untuk pelamar medis</span>
+                        @error('str_certificate')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Foto KTP <span style="color:red">*</span></label>
+                            <input type="file" class="form-control @error('personal_id_card') is-invalid @enderror" name="personal_id_card">
+                                @error('personal_id_card')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Foto KK <span style="color:red">*</span></label>
+                            <input type="file" class="form-control @error('family_id_card') is-invalid @enderror" name="family_id_card">
+                            @error('family_id_card')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Scan Ijazah / Surat Keterangan Lulus <span style="color:red">*</span></label>
+                            <input type="file" class="form-control @error('study_certificate') is-invalid @enderror" name="study_certificate">
+                            @error('study_certificate')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Scan Transkrip</label>
+                            <input type="file" class="form-control @error('transcript') is-invalid @enderror" name="transcript">
+                            @error('transcript')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-2">
+                        <div class="col-md-6">
+                            <label class="form-label">Scan SKCK</label>
+                            <input type="file" class="form-control @error('skck') is-invalid @enderror" name="skck">
+                            @error('skck')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Surat Keterangan Sehat</label>
+                            <input type="file" class="form-control @error('health_information') is-invalid @enderror" name="health_information">
+                            @error('health_information')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <span class="badge bg-danger">*Pastikan foto berformat .jpg dengan ukuran < 1MB</span>
+                    <hr>
                     <div class="mb-3">
+                        <label class="form-label">Dokumen Lainnya</label>
                         <div class="input-group hdtuto control-group lst increment" >
-                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address') is-invalid @enderror">
-                            <div class="input-group-btn"> 
-                            <button class="btn btn-success btn-add-sertif" type="button"><i class="fldemo glyphicon glyphicon-plus" onclick="showModal()"></i>Add</button>
-                            </div>
-                            @error('img_address')
+                            <input type="file" name="certificate_address" class="myfrm form-control @error('certificate_address') is-invalid @enderror">
+                            @error('certificate_address')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
-                        <div class="clone hide d-none">
-                            <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address') is-invalid @enderror">
-                            <div class="input-group-btn"> 
-                                <button class="btn btn-danger btn-remove-sertif" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
-                            </div>
-                            @error('img_address')
-                                <div class="invalid-feedback">
-                                {{ $message }}
-                                </div>
-                            @enderror
-                            </div>
-                        </div>
+                        <span class="badge bg-danger mt-2">*Satukan dokumen menjadi file .pdf dengan ukuran < 1MB</span>
                     </div>
 
                     <button class="w-20 btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Kirim Lamaran</button>
@@ -601,29 +581,7 @@
 
             })
 
-
-
-
-
-            // ============== tambah dan hapus input sertifikat ==============
-
-         
-                var increment = 0 
-                $(".btn-add-sertif").click(function(){ 
-                     if(increment < 2){
-                        increment = increment + 1 
-                        var lsthmtl = $(".clone").html();
-                        $(".increment").after(lsthmtl);
-                     } 
-                });  
-
-                $("body").on("click",".btn-remove-sertif",function(){ 
-                    increment = increment - 1
-                    $(this).parents(".hdtuto").remove();
-                });
-        // ============== akhir tambah dan hapus input sertifikat ==============
-
-            })
+        })
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
