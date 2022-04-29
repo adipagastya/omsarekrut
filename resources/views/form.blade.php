@@ -30,7 +30,7 @@
             display: flex;
             font-size: 16px;
             flex-direction: row;
-            }
+        }
         h1:after{
             content: "";
             flex: 1 1;
@@ -84,7 +84,7 @@
                     <div class="col-12 mt-5">
 
                        
-                    <div class="mb-3"><b>BIDANG PEKERJAAN</b></div>
+                    <div class="mb-3"><h1><b>BIDANG PEKERJAAN</b></h1></div>
                     
                     <div class="mb-3">
                         <label class="form-label">Nama Wilayah</label>
@@ -124,7 +124,7 @@
 
                     <input type="hidden" name="application_date" value="<?= date("Y/m/d") ?>">
 
-                    <div class="mb-3"><b>DATA DIRI</b></div>
+                    <div class="mb-3"><h1><b>DATA DIRI</b></h1></div>
 
                     <div class="mb-3">
                         <label class="form-label">Nama Lengkap <span style="color:red">*</span></label>
@@ -196,7 +196,7 @@
                     </div>
 
                     <br>
-                    <div class="mb-3"><b>KONTAK YANG DAPAT DIHUBUNGI</b></div>
+                    <div class="mb-3"><h1><b>KONTAK YANG DAPAT DIHUBUNGI</b></h1></div>
                     <div class="mb-3">
                         <label class="form-label">Nama <span style="color:red">*</span></label>
                         <input type="text" class="form-control @error('family_name') is-invalid @enderror" placeholder="Nama" name="family_name" value="{{ old('family_name') }}">
@@ -228,7 +228,7 @@
                     </div>
 
                     <br>
-                    <div class="mb-3"><b>PENDIDIKAN TERAKHIR</b></div>
+                    <div class="mb-3"><h1><b>PENDIDIKAN TERAKHIR</b></h1></div>
 
                     <div class="mb-3">
                         <label class="form-label">Nama Universitas / Institut / Sekolah <span style="color:red">*</span></label>
@@ -276,10 +276,10 @@
                     </div>
         
                     <br>
-                    <div class="mb-3"><b>PENGALAMAN KERJA</b></div>
+                    <div class="mb-3"><h1><b>PENGALAMAN KERJA</b></h1></div>
 
                     <div class="mb-3">
-                        <h1>Nama Instansi 1</h1>
+                        <label class="form-label"><b>Nama Instansi 1</b></label>
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_name" value="{{ old('work_name') }}">
                     </div>
                     <div class="row g-3 mb-3">
@@ -312,7 +312,7 @@
                     </div>
                     <br>
                     <div class="mb-3">
-                        <h1>Nama Instansi 2</h1>
+                        <label class="form-label"><b>Nama Instansi 2</b></label>
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_namei" value="{{ old('work_namei') }}">
                     </div>
                     <div class="row g-3 mb-3">
@@ -345,7 +345,7 @@
                     </div>
                     <br>
                     <div class="mb-3">
-                        <h1>Nama Instansi 3</h1>
+                        <label class="form-label"><b>Nama Instansi 3</b></label>
                         <input type="text" class="form-control" placeholder="Nama Instansi" name="work_nameii" value="{{ old('work_nameii') }}">
                     </div>
                     <div class="row g-3 mb-3">
@@ -377,7 +377,7 @@
                         <textarea class="form-control" placeholder="Deskripsi..." rows="3" name="descriptionii">{{ old('descriptionii') }}</textarea>
                     </div>
                     <br>
-                    <div class="mb-3"><b>DOKUMEN PENUNJANG</b></div>
+                    <div class="mb-3"><h1><b>DOKUMEN PENUNJANG</b></h1></div>
 
                     
                     <div class="mb-3" id="checkdisplay">
