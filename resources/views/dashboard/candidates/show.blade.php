@@ -388,11 +388,10 @@
                  <!-- End Modal -->
                 </div>
               </div>
+              <br>
               @endif
 
               @if (!$candidate->str_certificate == null)
-                  
-              <br>
               <label>Scan STR</label>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Scan STR" readonly>
