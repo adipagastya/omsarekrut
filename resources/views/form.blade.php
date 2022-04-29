@@ -461,11 +461,11 @@
 
                     <div class="mb-3">
                         <div class="input-group hdtuto control-group lst increment" >
-                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
+                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address') is-invalid @enderror">
                             <div class="input-group-btn"> 
                             <button class="btn btn-success btn-add-sertif" type="button"><i class="fldemo glyphicon glyphicon-plus" onclick="showModal()"></i>Add</button>
                             </div>
-                            @error('img_address[]')
+                            @error('img_address')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>
@@ -474,11 +474,11 @@
                         <span class="badge bg-danger mt-2">*Pastikan gambar berformat .jpg dengan ukuran < 1MB</span>
                         <div class="clone hide d-none">
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address[]') is-invalid @enderror">
+                            <input type="file" name="img_address[]" class="myfrm form-control @error('img_address') is-invalid @enderror">
                             <div class="input-group-btn"> 
                                 <button class="btn btn-danger btn-remove-sertif" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
-                            @error('img_address[]')
+                            @error('img_address')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>
