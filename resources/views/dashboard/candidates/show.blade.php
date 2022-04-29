@@ -354,8 +354,29 @@
               </div>
               <br>
               @endif
+
+
+              @if (!$candidate->certificate_address == null)
+                  
+              <br>
+              <label>Scan Pendukung</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Scan STR" readonly>
+                <div class="input-group-append">
+                  {{-- <a href="{{ link_to_asset('candidate-image/'.$candidate->str_certificate) }}" class="btn btn-outline-success" type="button">View</a> --}}
+                  <a href="{{ asset('candidate-image/'.$candidate->certificate_address) }}" target="_blank" class="btn btn-outline-success" type="button">View</a>
+                  {{-- <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#strModalCenter">View</button> --}}
+                  <a href="{{ route('getCandidateImage',$candidate->certificate_address) }}" class="btn btn-success" type="button" >Download</a>
+                 
+
+                </div>
+              </div>
+              <br>
+              @endif
           
-              @if (!$certificates->isEmpty())
+
+
+              {{-- @if (!$certificates->isEmpty())
               <label>Scan Sertifikat Pendukung</label>
               @foreach ($certificates as $certificate)
               <div class="input-group">
@@ -369,13 +390,13 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Surat Keterangan Sehat</h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle">Dokumen Penunjang</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                            <img class="img-fluid" src="{{ asset('candidate-image/'.$certificate->img_address) }}">
+                            <img class="img-fluid" src="{{ asset('certificates/'.$certificate->img_address) }}">
                         </div>
                       </div>
                     </div>
@@ -387,7 +408,8 @@
 
               @endforeach
               @endif
-              <br>
+              <br> --}}
+
             </div>
         </div>
       </div>

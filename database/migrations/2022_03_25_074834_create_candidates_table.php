@@ -41,7 +41,7 @@ class CreateCandidatesTable extends Migration
             $table->string('application_date');
             $table->foreignId('region_id');
             $table->foreignId('workfield_id');
-            $table->foreignId('certificate_id');
+            $table->string('certificate_address')->nullable();
             $table->foreignId('work_exp_id');
             $table->timestamps();
         });

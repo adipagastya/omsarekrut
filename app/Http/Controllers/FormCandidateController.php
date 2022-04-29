@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
-use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\WorkExperience;
-use App\Models\WorkField;
 
 class FormCandidateController extends Controller
 {
@@ -71,14 +69,15 @@ class FormCandidateController extends Controller
             "application_date" => "required", 
             "region_id" => "required",
             "workfield_id" => "required",
-            "img_address" => "image|max:1024",
-            "img_address.*" => "image|max:1024",
+            "certificate_address" => "mimes:pdf|max:1024", 
+            // "img_address" => "max:1024",
+            // "img_address.*" => "max:1024",
 
         ]); 
 
         // dd($validateData); 
 
-        $validateData['certificate_id'] = $this->generateUniqueCode();
+        // $validateData['certificate_id'] = $this->generateUniqueCode();
         $validateData['work_exp_id'] = $this->generateUniqueCodeForWorkExp();
 
         $data = [
@@ -118,21 +117,29 @@ class FormCandidateController extends Controller
 
         WorkExperience::insert($data);
 
-        $certificates = [];
-        if($request->file('img_address'))
-         {
+        // $certificates = [];
+        // if($request->file('img_address'))
+        //  {
 
-            foreach($request->file('img_address') as $certificate)
-            {
-                $name = time().rand(1,100).'.'.$certificate->extension();
-                $certificate->move(public_path('certificates'), $name);    
-                $certificateobject = new Certificate();
-                $certificateobject ->img_address = $name;
-                $certificateobject ->id_candidate = $validateData['certificate_id'];
-                $certificateobject ->save();
-            }
+        //     foreach($request->file('img_address') as $certificate)
+        //     {
+        //         $name = time().rand(1,100).'.'.$certificate->extension();
+        //         $certificate->move(public_path('certificates'), $name);    
+        //         $certificateobject = new Certificate();
+        //         $certificateobject ->img_address = $name;
+        //         $certificateobject ->id_candidate = $validateData['certificate_id'];
+        //         $certificateobject ->save();
+        //     }
             
-         }
+        //  }
+
+        if($request->hasFile('certificate_address')){
+            $filename = $request->file('certificate_address');
+            $name = time().rand(1,100).'.'.$filename->extension();
+            $filename->move(public_path('candidate-image'),$name);
+            $validateData['certificate_address']= $name; 
+        }
+
 
         
          if($request->hasFile('profile')){
@@ -251,14 +258,6 @@ class FormCandidateController extends Controller
         //
     }
 
-    public function generateUniqueCode()
-    {
-        do {
-            $code = random_int(100000, 999999);
-        } while (Candidate::where("certificate_id", "=", $code)->first());
-  
-        return $code;
-    }
 
     public function generateUniqueCodeForWorkExp()
     {
