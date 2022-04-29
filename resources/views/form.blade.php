@@ -301,10 +301,9 @@
                             <label class="form-label">Pendidikan Terakhir <span style="color:red">*</span></label>
                             <select class="form-select @error('edu_level') is-invalid @enderror" name="edu_level">
                                 <option value="" selected>Pilih Pendidikan Terakhir</option>
-                                <option value="SMA/K">SMA/K</option>
-                                <option value="Diploma">Diploma</option>
-                                <option value="Sarjana">Sarjana</option>
-                                
+                                <option value="SMA/K" @if (old('edu_level') == "SMA/K") {{ 'selected' }} @endif>SMA/K</option>
+                                <option value="Diploma" @if (old('edu_level') == "Diploma") {{ 'selected' }} @endif>Diploma</option>
+                                <option value="Sarjana" @if (old('edu_level') == "Sarjana") {{ 'selected' }} @endif>Sarjana</option>
                             </select>
                             @error('edu_level')
                                 <div class="invalid-feedback">
